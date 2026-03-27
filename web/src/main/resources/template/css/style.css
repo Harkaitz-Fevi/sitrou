@@ -1,0 +1,34 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 40rem; 
+    height: 40rem; 
+    background-color: rgb(191, 191, 255); 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;    
+    align-content: center; 
+    justify-content: center;
+    border-radius: 20px;
+    padding: 2rem;
+}
+
+.input-group {
+    width: 100%; 
+}
+
+
+.btn-outline-primary{
+    background-color: #d9d9d9; 
+    color: #02026f;         
+    border: 1px solid #333;   
+    border-radius: 20px;     
+    padding: 8px 45px;       
+    font-weight: bold;
+    font-size: 1.1rem;
+}
