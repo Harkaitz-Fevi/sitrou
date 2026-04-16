@@ -9,7 +9,7 @@
     <title>Administrazio Panela</title>
 </head>
 <body class="body">
-     <header>
+    <header>
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: rgb(96,107,255);">
             <div class="container-fluid">
                 <a class="navbar-brand text-black fw-bold ps-5">Miguel Altuna</a>
@@ -42,12 +42,11 @@
     <h1>Administrazio Panela</h1><br>
     <ul class="nav custom-nav-pills mb-4" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
-                <button class="nav-link active btn btn-outline-light" id="eraikinak-tab" 
+                <button class="nav-link btn btn-outline-light" id="eraikinak-tab" onclick="window.location.href='eraikinak.html'"
                 data-bs-toggle="pill" type="button" role="tab">Eraikinak</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link btn btn-outline-light" id="gelak-tab" onclick="window.location.href='gelak.html'" 
-                data-bs-toggle="pill" type="button" role="tab">Gelak</button>
+                <button class="nav-link active btn btn-outline-light" id="gelak-tab" data-bs-toggle="pill" type="button" role="tab">Gelak</button>
             </li>
             <li class="nav-item" role="presentation">
                 <button class="nav-link btn btn-outline-light" id="gailuak-tab" onclick="window.location.href='gailuak.html'"
@@ -63,77 +62,11 @@
             </li>
         </ul><br>
 
-    <div class="row align-items-center">
 
-        <div class="col-12 col-md-3">
-            <div class="input-group">
-                <span class="input-group-text" id="id-eraikina">ID ERAIKINA</span>
-                <input type="text" class="form-control" aria-describedby="id-eraikina">
-            </div>
-        </div>
 
-        <div class="col-12 col-md-3">
-            <div class="input-group">
-                <span class="input-group-text" id="izena">IZENA</span>
-                <input type="text" class="form-control" aria-describedby="izena">
-            </div>
-        </div>
 
-        <div class="col-12 col-md-3">
-            <div class="input-group">
-                <span class="input-group-text" id="deskribapena">DESKRIBAPENA</span>
-                <input type="text" class="form-control" aria-describedby="deskribapena">
-            </div>
-        </div>
 
-        <div class="col-12 col-md-3">
-            <button class="btn btn-outline-success btn-accion">Gehitu</button>
-        </div>
-        <br>
-    </div>
-    <!-- TABLA DATUEIKIN -->
-    <div class="row">
-        <div class="col-12 g-5">
-            <table class="table table-hover w-85">
-                <!-- TABLAREN TITULUAK -->
-                <thead class="table-secondary">
-                    <tr>
-                        <th scope="col">Id eraikina</th>
-                        <th scope="col">Izena</th>
-                        <th scope="col">Deskribapena</th>
-                        <th scope="col">Ekintza</th>
-                    </tr>
-                </thead>
-                <!-- TABLAREN DATUAK -->
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Ordenagailua</td>
-                        <td>jdjedheidj</td>
-                        <td><button class="btn btn-outline-primary btn-accion">Editatu</button>
-                            <button class="btn btn-outline-danger btn-accion">Ezabatu</button>
-                        </td>
-                    </tr>
-                    
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Sagua</td>
-                        <td>Periferikoa</td>
-                        <td><button class="btn btn-outline-primary btn-accion">Editatu</button>
-                            <button class="btn btn-outline-danger btn-accion">Ezabatu</button>
-                        </td>
-                    </tr>
-                    <tr >
-                        <th scope="row">3</th>
-                        <td>Teklatua</td>
-                        <td>Periferikoa</td>
-                        <td><button class="btn btn-outline-primary btn-accion">Editatu</button>
-                            <button class="btn btn-outline-danger btn-accion">Ezabatu</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>    
-    </div>
+
+
 </body>
 </html>
