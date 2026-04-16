@@ -14,7 +14,7 @@ import com.sitrou.web.repository.ErabiltzaileRepository;
 import com.sitrou.web.repository.GailuaRepository;
 import com.sitrou.web.repository.GelakRepository;
 
-/
+
 @Controller // Spring-i esaten dio klase honek HTTP eskariak (URLak) jasoko dituela
 public class HasieraController {
 
