@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Administrazio Panela</title>
+</head>
+<body class="body">
+     <header>
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: rgb(96,107,255);">
+            <div class="container-fluid">
+                <a class="navbar-brand text-black fw-bold ps-5">Miguel Altuna</a>
+                
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <button class="btn btn-outline-light btn me-2" type="button" onclick="window.location.href='gailuen_kontsulta.html'">Hasiera</button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="btn btn-outline-light btn" type="button">Administrazioa</button>
+                        </li>
+                    </ul>
+                     <!-- UsuarioLogeado.id_erabiltzailea
+                        * 1: Administratzailea
+                        * 2: Erabiltzailea
+                        UsuarioLogeado.rola -->
+                    <div class="d-flex align-items-center text-white pe-5">
+                        <button class="btn btn-outline-light btn" type="button" onclick="window.location.href='index.html'">Saioa itxi</button>
+                        <img src="./img/logopj.png" alt="User Icon" class="ms-2">
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <h1>Administrazio Panela</h1><br><br>
+    <div class="row align-items-center">
+        
+        <div class="col-12 col-md-3">
+            <div class="input-group">
+                <span class="input-group-text" id="id-eraikina">ID ERAIKINA</span>
+                <input type="text" class="form-control" aria-describedby="id-eraikina">
+            </div>
+        </div>
+
+        <div class="col-12 col-md-3">
+            <div class="input-group">
+                <span class="input-group-text" id="izena">IZENA</span>
+                <input type="text" class="form-control" aria-describedby="izena">
+            </div>
+        </div>
+
+        <div class="col-12 col-md-3">
+            <div class="input-group">
+                <span class="input-group-text" id="deskribapena">DESKRIBAPENA</span>
+                <input type="text" class="form-control" aria-describedby="deskribapena">
+            </div>
+        </div>
+
+        <div class="col-12 col-md-3">
+            <button class="btn btn-outline-success btn-accion">Gehitu</button>
+        </div>
+        
+    </div>
+    <!-- TABLA DATUEIKIN -->
+    <div class="row">
+        <div class="col-12 g-5">
+            <table class="table table-hover w-85">
+                <!-- TABLAREN TITULUAK -->
+                <thead class="table-secondary">
+                    <tr>
+                        <th scope="col">Id eraikina</th>
+                        <th scope="col">Izena</th>
+                        <th scope="col">Deskribapena</th>
+                        <th scope="col">Ekintza</th>
+                    </tr>
+                </thead>
+                <!-- TABLAREN DATUAK -->
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Ordenagailua</td>
+                        <td>jdjedheidj</td>
+                        <td><button class="btn btn-outline-primary btn-accion">Editatu</button>
+                            <button class="btn btn-outline-danger btn-accion">Ezabatu</button>
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Sagua</td>
+                        <td>Periferikoa</td>
+                        <td><button class="btn btn-outline-primary btn-accion">Editatu</button>
+                            <button class="btn btn-outline-danger btn-accion">Ezabatu</button>
+                        </td>
+                    </tr>
+                    <tr >
+                        <th scope="row">3</th>
+                        <td>Teklatua</td>
+                        <td>Periferikoa</td>
+                        <td><button class="btn btn-outline-primary btn-accion">Editatu</button>
+                            <button class="btn btn-outline-danger btn-accion">Ezabatu</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>    
+    </div>
+</body>
+</html>
