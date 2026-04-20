@@ -13,10 +13,11 @@
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: rgb(96,107,255);">
             <div class="container-fluid">
                 <a class="navbar-brand text-black fw-bold ps-5">Miguel Altuna</a>
-                
+               
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
 
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav me-auto">
@@ -42,11 +43,11 @@
     <h1>Administrazio Panela</h1><br>
     <ul class="nav custom-nav-pills mb-4" id="pills-tab" role="tablist">
             <li class="nav-item" role="presentation">
-                <button class="nav-link active btn btn-outline-light" id="eraikinak-tab" 
+                <button class="nav-link active btn btn-outline-light" id="eraikinak-tab"
                 data-bs-toggle="pill" type="button" role="tab">Eraikinak</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link btn btn-outline-light" id="gelak-tab" onclick="window.location.href='gelak.html'" 
+                <button class="nav-link btn btn-outline-light" id="gelak-tab" onclick="window.location.href='gelak.html'"
                 data-bs-toggle="pill" type="button" role="tab">Gelak</button>
             </li>
             <li class="nav-item" role="presentation">
@@ -62,8 +63,9 @@
                 data-bs-toggle="pill" type="button" role="tab">Historikoa</button>
             </li>
         </ul><br>
-
+<!-- Gehiketa -->
     <div class="row align-items-center">
+
 
         <div class="col-12 col-md-3">
             <div class="input-group">
@@ -72,12 +74,14 @@
             </div>
         </div>
 
+
         <div class="col-12 col-md-3">
             <div class="input-group">
                 <span class="input-group-text" id="izena">IZENA</span>
                 <input type="text" class="form-control" aria-describedby="izena">
             </div>
         </div>
+
 
         <div class="col-12 col-md-3">
             <div class="input-group">
@@ -86,16 +90,16 @@
             </div>
         </div>
 
+
         <div class="col-12 col-md-3">
             <button class="btn btn-outline-success btn-accion">Gehitu</button>
         </div>
         <br>
     </div>
     <!-- TABLA DATUEIKIN -->
-    <div class="row">
-        <div class="col-12 g-5">
-            <table class="table table-hover w-85">
-                <!-- TABLAREN TITULUAK -->
+    <div class="row justify-content-center">
+        <div class="col-12 d-flex justify-content-center g-5">
+            <table class="table table-hover w-75 text-center align-middle">
                 <thead class="table-secondary">
                     <tr>
                         <th scope="col">Id eraikina</th>
@@ -104,32 +108,34 @@
                         <th scope="col">Ekintza</th>
                     </tr>
                 </thead>
-                <!-- TABLAREN DATUAK -->
+               
                 <tbody>
                     <tr>
                         <th scope="row">1</th>
                         <td>Ordenagailua</td>
-                        <td>jdjedheidj</td>
-                        <td><button class="btn btn-outline-primary btn-accion">Editatu</button>
-                            <button class="btn btn-outline-danger btn-accion">Ezabatu</button>
-                        </td>
+                        <td>Eramangarria</td>
+                        <td>
+                            <button class="btn btn-outline-primary btn-sm btn-accion">Editatu</button>
+                            <button class="btn btn-outline-danger btn-sm btn-accion">Ezabatu</button></td>
                     </tr>
-                    
+                   
                     <tr>
                         <th scope="row">2</th>
                         <td>Sagua</td>
                         <td>Periferikoa</td>
-                        <td><button class="btn btn-outline-primary btn-accion">Editatu</button>
-                            <button class="btn btn-outline-danger btn-accion">Ezabatu</button>
-                        </td>
+                        <td>
+                            <button class="btn btn-outline-primary btn-sm btn-accion">Editatu</button>
+                            <button class="btn btn-outline-danger btn-sm btn-accion">Ezabatu</button></td>
                     </tr>
-                    <tr >
+
+
+                    <tr>
                         <th scope="row">3</th>
                         <td>Teklatua</td>
                         <td>Periferikoa</td>
-                        <td><button class="btn btn-outline-primary btn-accion">Editatu</button>
-                            <button class="btn btn-outline-danger btn-accion">Ezabatu</button>
-                        </td>
+                        <td>
+                            <button class="btn btn-outline-primary btn-sm btn-accion">Editatu</button>
+                            <button class="btn btn-outline-danger btn-sm btn-accion">Ezabatu</button></td>
                     </tr>
                 </tbody>
             </table>
@@ -137,3 +143,4 @@
     </div>
 </body>
 </html>
+
