@@ -62,6 +62,110 @@
             data-bs-toggle="pill" type="button" role="tab">Historikoa</button>
         </li>
     </ul><br>
+    <!-- GELAREN GEHIKETA -->
+    <div class="container-fluid px-4"> <div class="row g-2 align-items-center justify-content-center">
+       
+        <div class="col-md-1">
+            <div class="input-group input-group-sm">
+                <span class="input-group-text px-1">ID GELA</span>
+                <input type="text" class="form-control text-center">
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="input-group input-group-sm">
+                <span class="input-group-text">IZENA</span>
+                <input type="text" class="form-control">
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="input-group input-group-sm">
+                <label class="input-group-text">ID SOLAIRUA</label>
+                <select class="form-select">
+                    <option selected>Aukeratu...</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="input-group input-group-sm">
+                <span class="input-group-text">DESKRIBAPENA</span>
+                <input type="text" class="form-control">
+            </div>
+        </div>
+
+        <div class="col-md-1 d-grid">
+            <button class="btn btn-outline-success btn-accion">Gehitu</button>
+        </div>
+    </div>
+    <br>
+<!-- TAULA -->
+    <div class="row justify-content-center">
+        <div class="col-12 d-flex justify-content-center g-5">
+            <table class="table table-hover w-75 text-center align-middle">
+                <thead class="table-secondary">
+                    <tr>
+                        <th scope="col">Id gela</th>
+                        <th scope="col">Eraikina</th>
+                        <th scope="col">Solairua</th>
+                        <th scope="col">Gelaren izena</th>
+                        <th scope="col">Deskribapena</th>
+                        <th scope="col">Ekintza</th>
+                    </tr>
+                </thead>
+               
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>1</td>
+                        <td>1</td>
+                        <td>Gela 1</td>
+                        <td>Deskribapena 1</td>
+                        <td>
+                            <button class="btn btn-outline-primary btn-sm btn-accion">Editatu</button>
+                            <button class="btn btn-outline-danger btn-sm btn-accion">Ezabatu</button></td>
+                    </tr>
+                   
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>2</td>
+                        <td>2</td>
+                        <td>Gela 2</td>
+                        <td>Deskribapena 2</td>
+                        <td>
+                            <button class="btn btn-outline-primary btn-sm btn-accion">Editatu</button>
+                            <button class="btn btn-outline-danger btn-sm btn-accion">Ezabatu</button></td>
+                    </tr>
+
+
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>3</td>
+                        <td>3</td>
+                        <td>Gela 3</td>
+                        <td>Deskribapena 3</td>
+                        <td>
+                            <button class="btn btn-outline-primary btn-sm btn-accion">Editatu</button>
+                            <button class="btn btn-outline-danger btn-sm btn-accion">Ezabatu</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>    
+    </div>
+
+
+
+
+
+
+
+
+
+
 
 
 </body>

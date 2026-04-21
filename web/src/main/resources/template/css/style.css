@@ -101,3 +101,47 @@ label{
         font-family: monospace;
 }
 
+/*________________________HISTORIKOAREN SEARCH-AK________________________ */
+.search-box-modern {
+    max-width: 400px;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.search-box-modern .input-group {
+    border-radius: 50px; /* Forma de píldora */
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    transition: all 0.3s ease;
+}
+
+.search-box-modern .input-group:focus-within {
+    border-color:  #02026f;
+    box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.2) !important;
+    transform: translateY(-1px);
+}
+
+.search-box-modern .input-group-text {
+    background: transparent;
+    border: none;
+    padding-left: 20px;
+}
+
+.search-box-modern .form-control {
+    border: none;
+    padding: 12px 15px;
+    font-size: 0.95rem;
+    background: transparent;
+}
+
+.search-box-modern .form-control:focus {
+    box-shadow: none; /* Quitamos el brillo azul feo de Bootstrap */
+}
+
+/* Título más moderno */
+.title-section h2 {
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: #1e293b;
+}
