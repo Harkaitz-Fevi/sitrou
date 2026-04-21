@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="eu" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
@@ -10,6 +10,7 @@
 </head>
 <body class="body">
     <header>
+        </div>
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: rgb(96,107,255);">
             <div class="container-fluid">
                 <a class="navbar-brand text-black fw-bold ps-5">Miguel Altuna</a>
@@ -43,21 +44,21 @@
     <!-- FILTROAK -->
     <div class="row">
         <div class="col-12 col-md-3">
-        
-            <label for="EraikinaMotak" class="form-label" >ERAIKINAK</label>
             
+            <label for="EraikinaMotak" class="form-label" >ERAIKINAK</label>
+        
             <select class="form-select select-small" id="EraikinaMotak">
                 <option selected>Guztiak</option>
                 <option value="1">Bat</option>
                 <option value="2">Bi</option>
                 <option value="3">Hiru</option>
             </select>
-       
+        
         </div>
         <div class="col-12 col-md-3">
         
             <label for="GelaMotak" class="form-label" >GELAK</label>
-            
+        
             <select class="form-select select-small" id="GelaMotak">
                 <option selected>Guztiak</option>
                 <option value="1">Bat</option>
@@ -85,35 +86,31 @@
                     <th scope="col">Izena</th>
                     <th scope="col">Mota</th>
                     <th scope="col">Serie zenbakia</th>
-                    <th scope="col">Egoera</th>
+                    <th scope="col">Ekintzak</th>
                 </tr>
             </thead>
             <!-- TABLAREN DATUAK -->
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Ordenagailua</td>
-                    <td>Eramangarria</td>
-                    <td>SN-98765</td>
-                    <td>Erabilgarri</td>
-                </tr>
-                
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Sagua</td>
-                    <td>Periferikoa</td>
-                    <td>SN-12345</td>
-                    <td>Matxuratuta</td>
-                </tr>
+       <tbody>
+    <tr th:each="gailua : ${gailuak}">
+        <th scope="row" th:text="${gailua.id_gailua}">ID</th>
+        <td th:text="${gailua.izena}">Izena</td>
+        <td th:text="${gailua.gailu_mota}">Mota</td>
+        <td th:text="${gailua.serie_zenbakia}">Seriea</td>
+        
+        <td>
+            <form th:if="${gailua.egoera == 'Erabilgarri'}" action="/alokatu" method="post">
+                <input type="hidden" name="id_gailua" th:value="${gailua.id_gailua}">
+                <button type="submit" class="btn btn-success btn-sm">Erabilgarri</button>
+            </form>
 
-                <tr >
-                    <th scope="row">3</th>
-                    <td>Teklatua</td>
-                    <td>Periferikoa</td>
-                    <td>SN-11223</td>
-                    <td>Bajan</td>
-                </tr>
-            </tbody>
+            <button th:unless="${gailua.egoera == 'Erabilgarri'}" 
+                    class="btn btn-secondary btn-sm text-decoration-line-through opacity-50" 
+                    disabled>
+                Mailegatuta
+            </button>
+        </td>
+    </tr>
+        </tbody>
         </table>
     </div>    
 </div>

@@ -7,7 +7,7 @@ import com.sitrou.web.model.Erabiltzailea;
 
 
 @Repository // Spring-i esaten dio klase honek datu-basearekin komunikazioa kudeatzen duela
-public interface ErabiltzaileRepository extends JpaRepository<Erabiltzailea, Long> {
+public interface ErabiltzaileRepository extends JpaRepository<Erabiltzailea, Integer> {
    
     /* Hemen ez dugu metodorik idatzi behar momentuz.
        JpaRepository luzatzean, Spring-ek automatikoki ematen dizkigu:

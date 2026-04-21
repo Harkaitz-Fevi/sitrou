@@ -14,18 +14,27 @@
             <br><br><br>
             <h1 class="card-title" style="color: rgb(2, 2, 111); font-weight:bold; text-align: center; ">MIGUEL ALTUNA</h1><br><br>
             <h5 class="card-text" style="color: rgb(65, 65, 65); text-align: center;">Gailu elektronikoen kudeaketa sistemara sartzeko<br> erabili zure kontua.</h5><br><br>
+            
+            <div th:if="${error}" class="alert alert-danger" style="text-align: center;" role="alert">
+                <span th:text="${error}"></span>
+            </div>
+
             <br>
+            <form action="/login" method="post">
              <div class="input-group input-group-lg">
                 <span class="input-group-text" id="inputGroup-sizing-lg">Username</span>
-                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                <input type="text" name="username" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
             </div><br><br>
+
             <div class="input-group input-group-lg">
                 <span class="input-group-text" id="inputGroup-sizing-lg">Password</span>
-                <input type="password" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                <input type="password"  name="password"  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+                
+               
             </div>
         </div>
-        <button type="button" class="btn btn-outline-primary" onclick="window.location.href='gailuen_kontsulta.html'">SARTU</button>
-        
+        <button type="submit" class="btn btn-outline-primary" onclick="window.location.href='gailuen_kontsulta.html'">SARTU</button>
+        </form>
     </div>
 </body>
 </html>
