@@ -22,8 +22,6 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
-
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
@@ -69,58 +67,105 @@
                 data-bs-toggle="pill" type="button" role="tab">Historikoa</button>
             </li>
         </ul><br><br>
-        <a><strong> Erabiltzaileak automatikoki gehitzen dira lehen aldiz sartzean. Hemen haien baimenak kudeatu ditzakezu.</strong></a>
+        <a><strong> Erabiltzaileak automatikoki gehitzen dira lehen aldiz sartzean. Hemen haien baimenak kudeatu ditzakezu.</strong></a><br>
+    <!-- Gehiketa -->
+    <div class="row g-2 align-items-center"> <div class="col-md-2">
+            <div class="input-group">
+                <span class="input-group-text" id="id-eraikina">ID</span>
+                <input type="text" class="form-control" aria-describedby="id-eraikina">
+            </div>
+        </div>
 
-<!-- Taula -->
-        <div class="row justify-content-center">
-        <div class="col-12 d-flex justify-content-center g-5">
+        <div class="col-md-3">
+            <div class="input-group">
+                <span class="input-group-text" id="izena">IZENA</span>
+                <input type="text" class="form-control" aria-describedby="izena">
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="input-group">
+                <span class="input-group-text" id="deskribapena">PASAHITZA</span>
+                <input type="text" class="form-control" aria-describedby="deskribapena">
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <div class="input-group">
+                <span class="input-group-text" id="rola">ROLA</span>
+                <input type="text" class="form-control" aria-describedby="rola">
+            </div>
+        </div>
+
+        <div class="col-md-2">
+            <button class="btn btn-outline-success btn-accion w-100">Gehitu</button>
+        </div>
+    </div>
+    <br>
+
+    <div class="col-md-8"> 
+        <div class="d-flex align-items-center" style="gap: 80px;">
+            <label class="form-label mb-0 me-3 text-secondary fw-bold text-nowrap" style="font-size: 0.9rem;">
+                Bilatu erabiltzailearen IDa:
+            </label>
+
+            <div class="search-box-modern flex-grow-1">
+                <div class="input-group shadow-sm">
+                    <span class="input-group-text bg-white border-end-0">
+                        <i class="bi bi-search text-primary"></i>
+                    </span>
+                    <input type="text" class="form-control border-start-0" placeholder="Bilatu..." aria-label="Search">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-4">
+        <div class="col-12 d-flex justify-content-center">
             <table class="table table-hover w-75 text-center align-middle">
                 <thead class="table-secondary">
                     <tr>
+                        <th scope="col">ID</th>
                         <th scope="col">Izena</th>
                         <th scope="col">Pasahitza</th>
                         <th scope="col">Rola</th>
+                        <th scope="col">Ekintza</th>
                     </tr>
                 </thead>
-               
+                
                 <tbody>
                     <tr>
-                        <th scope="row">1</th>
+                        <th>1</th>
+                        <th scope="row">Admin_01</th> <td>
+                            <span class="password-hidden">••••••••</span> </td>
+                        <td><span class="badge bg-danger">Admin</span></td> 
                         <td>
-                            <div class="d-flex align-items-center justify-content-center">
-                                <span class="password-hidden me-2">admin123lddchjdh</span>
-                            </div>
-                        </td>
-                        <td>
-                            <button class="btn btn-outline-primary btn-sm btn-accion">Editatu</button>
+                            <button class="btn btn-outline-primary btn-sm">Editatu</button>
                             <button class="btn btn-outline-danger btn-sm btn-accion">Ezabatu</button>
                         </td>
                     </tr>
-                   
+                    
                     <tr>
-                        <th scope="row">2</th>
+                        <th>2</th>
+                        <th scope="row">User_88</th>
                         <td>
-                            <div class="d-flex align-items-center justify-content-center">
-                                <span class="password-hidden me-2">admin123</span>
-                            </div>
+                            <span class="password-hidden">••••••••</span>
                         </td>
+                        <td><span class="badge bg-primary">Arrunta</span></td>
                         <td>
-                            <button class="btn btn-outline-primary btn-sm btn-accion">Editatu</button>
+                            <button class="btn btn-outline-primary btn-sm">Editatu</button>
                             <button class="btn btn-outline-danger btn-sm btn-accion">Ezabatu</button>
                         </td>
                     </tr>
-                   
+                    
                     <tr>
-                        <th scope="row">3</th>
-                        <td>                            
-                            <div class="d-flex align-items-center justify-content-center">
-                                <span class="password-hidden me-2">nskhsjdhwjdh</span>
-                            </div>
-                        </td>
-
-
+                        <th>3</th>
+                        <th scope="row">Editor_X</th>
                         <td>
-                            <button class="btn btn-outline-primary btn-sm btn-accion">Editatu</button>
+                            <span class="password-hidden">••••••••</span>
+                        </td>
+                        <td><span class="badge bg-primary">Arrunta</span></td>
+                        <td>
+                            <button class="btn btn-outline-primary btn-sm">Editatu</button>
                             <button class="btn btn-outline-danger btn-sm btn-accion">Ezabatu</button>
                         </td>
                     </tr>

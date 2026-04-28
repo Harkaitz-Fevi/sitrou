@@ -67,7 +67,101 @@
                 <button class="nav-link btn btn-outline-light" id="historikoa-tab" onclick="window.location.href='historikoa.html'"
                 data-bs-toggle="pill" type="button" role="tab">Historikoa</button>
             </li>
-        </ul><br>
+    </ul><br>
+<!-- Gehiketa -->
+    <div class="row align-items-center">
 
+        <div class="col-12 col-md-3">
+            <div class="input-group">
+                <span class="input-group-text" id="id-eraikina">ID GAILUA</span>
+                <input type="text" class="form-control" aria-describedby="id-eraikina">
+            </div>
+        </div>
+
+        <div class="col-12 col-md-3">
+            <div class="input-group">
+                <span class="input-group-text" id="izena">ID GELA</span>
+                <input type="text" class="form-control" aria-describedby="izena">
+            </div>
+        </div>
+
+        <div class="col-12 col-md-3">
+            <div class="input-group">
+                <span class="input-group-text" id="deskribapena">EGOERA</span>
+                <input type="text" class="form-control" aria-describedby="deskribapena">
+            </div>
+        </div>
+        
+        <div class="col-12 col-md-3">
+            <div class="input-group">
+                <span class="input-group-text" id="id-eraikina">GAILU MOTA</span>
+                <input type="text" class="form-control" aria-describedby="id-eraikina">
+            </div>
+        </div>
+
+        <div class="col-12 col-md-3">
+            <div class="input-group">
+                <span class="input-group-text" id="izena">IZENA</span>
+                <input type="text" class="form-control" aria-describedby="izena">
+            </div>
+        </div>
+
+        <div class="col-12 col-md-3">
+            <div class="input-group">
+                <span class="input-group-text" id="deskribapena">SERIE ZENBAKIA</span>
+                <input type="text" class="form-control" aria-describedby="deskribapena">
+            </div>
+        </div>
+
+        <div class="col-12 col-md-3">
+            <button class="btn btn-outline-success btn-accion">Gehitu</button>
+        </div>
+        
+    </div>
+    <!-- TABLA DATUEIKIN -->
+    <div class="row justify-content-center">
+        <div class="col-12 d-flex justify-content-center g-5">
+            <table class="table table-hover w-75 text-center align-middle">
+                <thead class="table-secondary">
+                    <tr>
+                        <th scope="col">Id eraikina</th>
+                        <th scope="col">Izena</th>
+                        <th scope="col">Deskribapena</th>
+                        <th scope="col">Ekintza</th>
+                    </tr>
+                </thead>
+               
+                <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Ordenagailua</td>
+                        <td>Eramangarria</td>
+                        <td>
+                            <button class="btn btn-outline-primary btn-sm btn-accion">Editatu</button>
+                            <button class="btn btn-outline-danger btn-sm btn-accion">Ezabatu</button></td>
+                    </tr>
+                   
+                    <tr>
+                        <th scope="row">2</th>
+                        <td>Sagua</td>
+                        <td>Periferikoa</td>
+                        <td>
+                            <button class="btn btn-outline-primary btn-sm btn-accion">Editatu</button>
+                            <button class="btn btn-outline-danger btn-sm btn-accion">Ezabatu</button></td>
+                    </tr>
+
+
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Teklatua</td>
+                        <td>Periferikoa</td>
+                        <td>
+                            <button class="btn btn-outline-primary btn-sm btn-accion">Editatu</button>
+                            <button class="btn btn-outline-danger btn-sm btn-accion">Ezabatu</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>    
+    </div>
 </body>
 </html>
