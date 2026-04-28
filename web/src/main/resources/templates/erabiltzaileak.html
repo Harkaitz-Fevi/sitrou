@@ -35,18 +35,29 @@
                                 Administrazioa
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="administrazioDropdown">
-                                <li><a class="dropdown-item" href="gailuen_kontsulta.html"
-                                        th:href="@{/gailuen_kontsulta}">Gailuen Kontsulta</a></li>
-                                <li><a class="dropdown-item" href="eraikinak.html" th:href="@{/eraikinak}">Eraikinak
-                                        Kudeatu</a></li>
-                                <li><a class="dropdown-item" href="gelak.html" th:href="@{/gelak}">Gelak Kudeatu</a>
+                                <li>
+                                    <a class="dropdown-item" href="eraikinak.html" th:href="@{/eraikinak}">Eraikinak
+                                        Kudeatu</a>
                                 </li>
-                                <li><a class="dropdown-item" href="gailuak.html" th:href="@{/gailuak}">Gailuak
-                                        Kudeatu</a></li>
-                                <li><a class="dropdown-item" href="erabiltzaileak.html"
-                                        th:href="@{/erabiltzaileak}">Erabiltzaileak Kudeatu</a></li>
-                                <li><a class="dropdown-item" href="historikoa.html"
-                                        th:href="@{/historikoa}">Historikoa</a></li>
+                                <li>
+                                    <a class="dropdown-item" href="gelak.html" th:href="@{/gelak}">Gelak Kudeatu</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="gailuak.html" th:href="@{/gailuak}">Gailuak
+                                        Kudeatu</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="erabiltzaileak.html"
+                                        th:href="@{/erabiltzaileak}">Erabiltzaileak Kudeatu</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="historikoa.html"
+                                        th:href="@{/historikoa}">Historikoa</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="solairuak.html"
+                                        th:href="@{/solairuak}">Solairuak Kudeatu</a>
+                                </li>
                             </ul>
                         </li>
                     </ul>
@@ -62,28 +73,88 @@
             </div>
         </nav>
     </header>
+    <h1>Administrazio Panela</h1><br>
+
     <ul class="nav custom-nav-pills mb-4" id="pills-tab" role="tablist">
-            <li class="nav-item" role="presentation">
-                <button class="nav-link  btn btn-outline-light" id="eraikinak-tab" onclick="window.location.href='eraikinak.html'"
-                data-bs-toggle="pill" type="button" role="tab">Eraikinak</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link btn btn-outline-light" id="gelak-tab" onclick="window.location.href='gelak.html'"
-                data-bs-toggle="pill" type="button" role="tab">Gelak</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link btn btn-outline-light" id="gailuak-tab" onclick="window.location.href='gailuak.html'"
-                data-bs-toggle="pill" type="button" role="tab">Gailuak</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link active btn btn-outline-light" id="erabiltzaileak-tab" data-bs-toggle="pill" type="button" role="tab">Erabiltzaileak</button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link btn btn-outline-light" id="historikoa-tab" onclick="window.location.href='historikoa.html'"
-                data-bs-toggle="pill" type="button" role="tab">Historikoa</button>
-            </li>
-        </ul><br><br>
-        <a><strong> Erabiltzaileak automatikoki gehitzen dira lehen aldiz sartzean. Hemen haien baimenak kudeatu ditzakezu.</strong></a>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link  btn btn-outline-light" id="eraikinak-tab" onclick="window.location.href='eraikinak.html'"
+            th:onclick="|window.location.href='@{/eraikinak}'|" data-bs-toggle="pill" type="button" role="tab">Eraikinak</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link btn btn-outline-light" id="gelak-tab" onclick="window.location.href='gelak.html'"
+            th:onclick="|window.location.href='@{/gelak}'|" data-bs-toggle="pill" type="button" role="tab">Gelak</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link btn btn-outline-light" id="gailuak-tab" onclick="window.location.href='gailuak.html'"
+            th:onclick="|window.location.href='@{/gailuak}'|" data-bs-toggle="pill" type="button" role="tab">Gailuak</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active btn btn-outline-light" id="erabiltzaileak-tab" onclick="window.location.href='erabiltzaileak.html'"
+            th:onclick="|window.location.href='@{/erabiltzaileak}'|" data-bs-toggle="pill" type="button" role="tab">Erabiltzaileak</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link btn btn-outline-light" id="historikoa-tab" onclick="window.location.href='historikoa.html'"
+            th:onclick="|window.location.href='@{/historikoa}'|" data-bs-toggle="pill" type="button" role="tab">Historikoa</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link btn btn-outline-light" id="solairuak-tab" onclick="window.location.href='solairuak.html'"
+            th:onclick="|window.location.href='@{/solairuak}'|" data-bs-toggle="pill" type="button" role="tab">Solairuak</button>
+        </li>
+    </ul><br>
+        <br><br>
+        <form th:action="@{/erabiltzailea-gehitu}" method="post">
+            <div class="row g-2 align-items-center mb-4">
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <span class="input-group-text">ID</span>
+                        <input type="text" name="id_erabiltzailea" class="form-control" placeholder="Automatikoa" readonly>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="input-group">
+                        <span class="input-group-text">IZENA</span>
+                        <input type="text" name="usuarioa" class="form-control" required>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="input-group">
+                        <span class="input-group-text">PASAHITZA</span>
+                        <input type="password" name="pasahitza" class="form-control" required>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="input-group">
+                        <span class="input-group-text">ROLA</span>
+                        <select name="rola" class="form-select">
+                            <option value="Arrunta">Arrunta</option>
+                            <option value="Admin">Admin</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-outline-success btn-accion w-100">Gehitu</button>
+                </div>
+            </div>
+        </form>
+
+        <br>
+
+        <div class="col-md-8 mb-4">
+            <div class="d-flex align-items-center" style="gap: 150px;">
+                <label class="form-label mb-0 me-3 text-secondary fw-bold text-nowrap" style="font-size: 0.9rem;">
+                    Bilatu erabiltzailearen IDa, izena... :
+                </label>
+
+                <div class="search-box-modern flex-grow-1">
+                    <div class="input-group shadow-sm">
+                        <span class="input-group-text bg-white border-end-0">
+                            <i class="bi bi-search text-primary"></i>
+                        </span>
+                        <input type="text" id="searchInput" class="form-control border-start-0" placeholder="Bilatu..." aria-label="Search">
+                    </div>
+                </div>
+            </div>
+        </div>
 
 <!-- Taula -->
         <div class="row justify-content-center">
@@ -100,13 +171,11 @@
                 </thead>
                
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>
-                            <div class="d-flex align-items-center justify-content-center">
-                                <span class="password-hidden me-2">admin123lddchjdh</span>
-                            </div>
-                        </td>
+                    <tr th:each="erabiltzailea : ${erabiltzaileak}">
+                        <th scope="row" th:text="${erabiltzailea.id_erabiltzailea}"></th>
+                        <td th:text="${erabiltzailea.usuarioa}"></td>
+                        <td th:text="${erabiltzailea.pasahitza}"></td>
+                        <td th:text="${erabiltzailea.rola}"></td>
                         <td>
                             <button class="btn btn-outline-primary btn-sm btn-accion">Editatu</button>
                             <form action="/erabiltzailea-ezabatu" method="post" style="display:inline;">

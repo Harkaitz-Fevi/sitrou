@@ -24,7 +24,6 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
@@ -36,18 +35,29 @@
                                 Administrazioa
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="administrazioDropdown">
-                                <li><a class="dropdown-item" href="gailuen_kontsulta.html"
-                                        th:href="@{/gailuen_kontsulta}">Gailuen Kontsulta</a></li>
-                                <li><a class="dropdown-item" href="eraikinak.html" th:href="@{/eraikinak}">Eraikinak
-                                        Kudeatu</a></li>
-                                <li><a class="dropdown-item" href="gelak.html" th:href="@{/gelak}">Gelak Kudeatu</a>
+                                <li>
+                                    <a class="dropdown-item" href="eraikinak.html" th:href="@{/eraikinak}">Eraikinak
+                                        Kudeatu</a>
                                 </li>
-                                <li><a class="dropdown-item" href="gailuak.html" th:href="@{/gailuak}">Gailuak
-                                        Kudeatu</a></li>
-                                <li><a class="dropdown-item" href="erabiltzaileak.html"
-                                        th:href="@{/erabiltzaileak}">Erabiltzaileak Kudeatu</a></li>
-                                <li><a class="dropdown-item" href="historikoa.html"
-                                        th:href="@{/historikoa}">Historikoa</a></li>
+                                <li>
+                                    <a class="dropdown-item" href="gelak.html" th:href="@{/gelak}">Gelak Kudeatu</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="gailuak.html" th:href="@{/gailuak}">Gailuak
+                                        Kudeatu</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="erabiltzaileak.html"
+                                        th:href="@{/erabiltzaileak}">Erabiltzaileak Kudeatu</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="historikoa.html"
+                                        th:href="@{/historikoa}">Historikoa</a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="solairuak.html"
+                                        th:href="@{/solairuak}">Solairuak Kudeatu</a>
+                                </li>
                             </ul>
                         </li>
                     </ul>
@@ -66,24 +76,28 @@
     <h1>Administrazio Panela</h1><br>
     <ul class="nav custom-nav-pills mb-4" id="pills-tab" role="tablist">
         <li class="nav-item" role="presentation">
-            <button class="nav-link btn btn-outline-light" id="eraikinak-tab"
-                onclick="window.location.href='eraikinak.html'" type="button">Eraikinak</button>
+            <button class="nav-link  btn btn-outline-light" id="eraikinak-tab" onclick="window.location.href='eraikinak.html'"
+            th:onclick="|window.location.href='@{/eraikinak}'|" data-bs-toggle="pill" type="button" role="tab">Eraikinak</button>
         </li>
         <li class="nav-item" role="presentation">
             <button class="nav-link btn btn-outline-light" id="gelak-tab" onclick="window.location.href='gelak.html'"
-                type="button">Gelak</button>
+            th:onclick="|window.location.href='@{/gelak}'|" data-bs-toggle="pill" type="button" role="tab">Gelak</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link btn btn-outline-light" id="gailuak-tab"
-                onclick="window.location.href='gailuak.html'" type="button">Gailuak</button>
+            <button class="nav-link active btn btn-outline-light" id="gailuak-tab" onclick="window.location.href='gailuak.html'"
+            th:onclick="|window.location.href='@{/gailuak}'|" data-bs-toggle="pill" type="button" role="tab">Gailuak</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link btn btn-outline-light" id="erabiltzaileak-tab"
-                onclick="window.location.href='erabiltzaileak.html'" type="button">Erabiltzaileak</button>
+            <button class="nav-link btn btn-outline-light" id="erabiltzaileak-tab" onclick="window.location.href='erabiltzaileak.html'"
+            th:onclick="|window.location.href='@{/erabiltzaileak}'|" data-bs-toggle="pill" type="button" role="tab">Erabiltzaileak</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link btn btn-outline-light" id="historikoa-tab"
-                onclick="window.location.href='historikoa.html'" type="button">Historikoa</button>
+            <button class="nav-link btn btn-outline-light" id="historikoa-tab" onclick="window.location.href='historikoa.html'"
+            th:onclick="|window.location.href='@{/historikoa}'|" data-bs-toggle="pill" type="button" role="tab">Historikoa</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link btn btn-outline-light" id="solairuak-tab" onclick="window.location.href='solairuak.html'"
+            th:onclick="|window.location.href='@{/solairuak}'|" data-bs-toggle="pill" type="button" role="tab">Solairuak</button>
         </li>
     </ul><br>
     <h1>Gailuak</h1><br>

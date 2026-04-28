@@ -74,13 +74,14 @@
         </nav>
     </header>
     <h1>Administrazio Panela</h1><br>
+
     <ul class="nav custom-nav-pills mb-4" id="pills-tab" role="tablist">
         <li class="nav-item" role="presentation">
             <button class="nav-link  btn btn-outline-light" id="eraikinak-tab" onclick="window.location.href='eraikinak.html'"
             th:onclick="|window.location.href='@{/eraikinak}'|" data-bs-toggle="pill" type="button" role="tab">Eraikinak</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link active btn btn-outline-light" id="gelak-tab" onclick="window.location.href='gelak.html'"
+            <button class="nav-link btn btn-outline-light" id="gelak-tab" onclick="window.location.href='gelak.html'"
             th:onclick="|window.location.href='@{/gelak}'|" data-bs-toggle="pill" type="button" role="tab">Gelak</button>
         </li>
         <li class="nav-item" role="presentation">
@@ -96,90 +97,97 @@
             th:onclick="|window.location.href='@{/historikoa}'|" data-bs-toggle="pill" type="button" role="tab">Historikoa</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link btn btn-outline-light" id="solairuak-tab" onclick="window.location.href='solairuak.html'"
+            <button class="nav-link active btn btn-outline-light" id="solairuak-tab" onclick="window.location.href='solairuak.html'"
             th:onclick="|window.location.href='@{/solairuak}'|" data-bs-toggle="pill" type="button" role="tab">Solairuak</button>
         </li>
     </ul><br>
-    <!-- GELAREN GEHIKETA -->
-    <div class="container-fluid px-4">
-        <div class="row g-2 align-items-center justify-content-center">
-            <form action="/gela-gehitu" method="post" class="row g-2 align-items-center justify-content-center">
-                <div class="col-md-1">
-                    <div class="input-group input-group-sm">
-                        <span class="input-group-text px-1">ID GELA</span>
-                        <input type="text" name="id_gela" class="form-control text-center" required>
-                    </div>
-                </div>
-
+        <br><br>
+        <form th:action="@{/erabiltzailea-gehitu}" method="post">
+            <div class="row g-2 align-items-center mb-4">
                 <div class="col-md-2">
-                    <div class="input-group input-group-sm">
-                        <span class="input-group-text">ID ERAIKINA</span>
-                        <input type="text" name="id_eraikina" class="form-control" required>
+                    <div class="input-group">
+                        <span class="input-group-text">ID</span>
+                        <input type="text" name="id_erabiltzailea" class="form-control" placeholder="Automatikoa" readonly>
                     </div>
                 </div>
-
-                <div class="col-md-2">
-                    <div class="input-group input-group-sm">
-                        <span class="input-group-text">IZENA</span>
-                        <input type="text" name="izena" class="form-control" required>
-                    </div>
-                </div>
-
                 <div class="col-md-3">
-                    <div class="input-group input-group-sm">
-                        <span class="input-group-text">DESKRIBAPENA</span>
-                        <input type="text" name="deskribapena" class="form-control" required>
+                    <div class="input-group">
+                        <span class="input-group-text">IZENA</span>
+                        <input type="text" name="usuarioa" class="form-control" required>
                     </div>
                 </div>
-
+                <div class="col-md-3">
+                    <div class="input-group">
+                        <span class="input-group-text">PASAHITZA</span>
+                        <input type="password" name="pasahitza" class="form-control" required>
+                    </div>
+                </div>
                 <div class="col-md-2">
-                    <div class="input-group input-group-sm">
-                        <span class="input-group-text">EKINTZA</span>
-                        <input type="text" name="ekintza" class="form-control" required>
+                    <div class="input-group">
+                        <span class="input-group-text">ROLA</span>
+                        <select name="rola" class="form-select">
+                            <option value="Arrunta">Arrunta</option>
+                            <option value="Admin">Admin</option>
+                        </select>
                     </div>
                 </div>
-
-                <div class="col-md-1 d-grid">
-                    <button type="submit" class="btn btn-outline-success btn-accion">Gehitu</button>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-outline-success btn-accion w-100">Gehitu</button>
                 </div>
-            </form>
-        </div>
-        <br>
-        <!-- TAULA -->
-        <div class="row justify-content-center">
-            <div class="col-12 d-flex justify-content-center g-5">
-                <table class="table table-hover w-75 text-center align-middle">
-                    <thead class="table-secondary">
-                        <tr>
-                            <th scope="col">Id gela</th>
-                            <th scope="col">Eraikina</th>
-                            <th scope="col">Solairua</th>
-                            <th scope="col">Gelaren izena</th>
-                            <th scope="col">Deskribapena</th>
-                            <th scope="col">Ekintza</th>
-                        </tr>
-                    </thead>
+            </div>
+        </form>
 
-                    <tbody>
-                        <tr th:each="gela : ${gelak}">
-                            <th scope="row" th:text="${gela.id_gela}"></th>
-                            <td th:text="${gela.id_eraikina}"></td>
-                            <td th:text="${gela.izena}"></td>
-                            <td th:text="${gela.deskribapena}"></td>
-                            <td th:text="${gela.ekintza}"></td>
-                            <td>
-                                <button class="btn btn-outline-primary btn-sm btn-accion">Editatu</button>
-                                <form action="/gela-ezabatu" method="post" style="display:inline;">
-                                    <input type="hidden" name="id_gela" th:value="${gela.id_gela}">
-                                    <button type="submit"
-                                        class="btn btn-outline-danger btn-sm btn-accion">Ezabatu</button>
-                                </form>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+        <br>
+
+        <div class="col-md-8 mb-4">
+            <div class="d-flex align-items-center" style="gap: 150px;">
+                <label class="form-label mb-0 me-3 text-secondary fw-bold text-nowrap" style="font-size: 0.9rem;">
+                    Bilatu erabiltzailearen IDa, izena... :
+                </label>
+
+                <div class="search-box-modern flex-grow-1">
+                    <div class="input-group shadow-sm">
+                        <span class="input-group-text bg-white border-end-0">
+                            <i class="bi bi-search text-primary"></i>
+                        </span>
+                        <input type="text" id="searchInput" class="form-control border-start-0" placeholder="Bilatu..." aria-label="Search">
+                    </div>
+                </div>
             </div>
         </div>
+
+<!-- Taula -->
+        <div class="row justify-content-center">
+        <div class="col-12 d-flex justify-content-center g-5">
+            <table class="table table-hover w-75 text-center align-middle">
+                <thead class="table-secondary">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Usuarioa</th>
+                        <th scope="col">Pasahitza</th>
+                        <th scope="col">Rola</th>
+                        <th scope="col">Ekintza</th>
+                    </tr>
+                </thead>
+               
+                <tbody>
+                    <tr th:each="erabiltzailea : ${erabiltzaileak}">
+                        <th scope="row" th:text="${erabiltzailea.id_erabiltzailea}"></th>
+                        <td th:text="${erabiltzailea.usuarioa}"></td>
+                        <td th:text="${erabiltzailea.pasahitza}"></td>
+                        <td th:text="${erabiltzailea.rola}"></td>
+                        <td>
+                            <button class="btn btn-outline-primary btn-sm btn-accion">Editatu</button>
+                            <form action="/erabiltzailea-ezabatu" method="post" style="display:inline;">
+                                <input type="hidden" name="id" th:value="${erabiltzailea.id_erabiltzailea}">
+                                <button type="submit" class="btn btn-outline-danger btn-sm btn-accion">Ezabatu</button>
+                            </form>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </body>
 
 </html>
