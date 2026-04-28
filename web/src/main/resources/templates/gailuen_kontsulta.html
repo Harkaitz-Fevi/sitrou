@@ -1,72 +1,89 @@
 <!DOCTYPE html>
 <html lang="eu" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-    <link rel="stylesheet" 
-      href="../static/css/style.css" 
-      th:href="@{/css/style.css}">
-    <script th:src="@{/js/script.js}"
-    src="../static/js/script.js"
-    >
-    </script>      
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}">
+    <script th:src="@{/js/script.js}" src="../static/js/script.js">
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gailuen kontsulta</title>
 </head>
+
 <body class="body">
     <header>
-        </div>
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: rgb(96,107,255);">
-            <div class="container-fluid">
-                <a class="navbar-brand text-black fw-bold ps-5">Miguel Altuna</a>
-                
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: rgb(96,107,255);">
+                <div class="container-fluid">
+                    <a class="navbar-brand text-black fw-bold ps-5">Miguel Altuna</a>
 
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <button class="btn btn-outline-light btn me-2" type="button">Hasiera</button>
-                        </li>
-                        <li class="nav-item">
-                            <button type="button" class="btn btn-outline-light btn" disabled onclick="window.location.href='eraikinak.html'">Administrazioa</button>
-                        </li>
-                    </ul>
-                     <!-- UsuarioLogeado.id_erabiltzailea
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav me-auto">
+                            <li class="nav-item">
+                                <a class="btn btn-outline-light btn me-2" th:href="@{/gailuen_kontsulta}">Hasiera</a>
+                            </li>
+                            <li class="nav-item dropdown" th:if="${isAdmin}">
+                                <button class="btn btn-outline-light btn dropdown-toggle" type="button"
+                                    id="administrazioDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Administrazioa
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="administrazioDropdown">
+                                    <li><a class="dropdown-item" href="gailuen_kontsulta.html"
+                                            th:href="@{/gailuen_kontsulta}">Gailuen Kontsulta</a></li>
+                                    <li><a class="dropdown-item" href="eraikinak.html" th:href="@{/eraikinak}">Eraikinak
+                                            Kudeatu</a></li>
+                                    <li><a class="dropdown-item" href="gelak.html" th:href="@{/gelak}">Gelak Kudeatu</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="gailuak.html" th:href="@{/gailuak}">Gailuak
+                                            Kudeatu</a></li>
+                                    <li><a class="dropdown-item" href="erabiltzaileak.html"
+                                            th:href="@{/erabiltzaileak}">Erabiltzaileak Kudeatu</a></li>
+                                    <li><a class="dropdown-item" href="historikoa.html"
+                                            th:href="@{/historikoa}">Historikoa</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <!-- UsuarioLogeado.id_erabiltzailea
                         * 1: Administratzailea
                         * 2: Erabiltzailea
                         UsuarioLogeado.rola -->
-                    <div class="d-flex align-items-center text-white pe-5">
-                        <button class="btn btn-outline-light btn" type="button" onclick="window.location.href='index.html'">Saioa itxi</button>
-                        <img src="../static/img/logopj.png" 
-                        th:src="@{/img/logopj.png}" 
-                        alt="User Icon" class="ms-2">
+                        <div class="d-flex align-items-center text-white pe-5">
+                            <a class="btn btn-outline-light btn" th:href="@{/}">Saioa itxi</a>
+                            <img src="../static/img/logopj.png" th:src="@{/img/logopj.png}" alt="User Icon"
+                                class="ms-2">
+                        </div>
                     </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
     </header>
     <h1>Gailuen Kontsulta</h1><br><br>
     <!-- FILTROAK -->
     <div class="row">
         <div class="col-12 col-md-3">
-            
-            <label for="EraikinaMotak" class="form-label" >ERAIKINAK</label>
-        
+
+            <label for="EraikinaMotak" class="form-label">ERAIKINAK</label>
+
             <select class="form-select select-small" id="EraikinaMotak">
                 <option selected>Guztiak</option>
                 <option value="1">Bat</option>
                 <option value="2">Bi</option>
                 <option value="3">Hiru</option>
             </select>
-        
+
         </div>
         <div class="col-12 col-md-3">
-        
-            <label for="GelaMotak" class="form-label" >GELAK</label>
-        
+
+            <label for="GelaMotak" class="form-label">GELAK</label>
+
             <select class="form-select select-small" id="GelaMotak">
                 <option selected>Guztiak</option>
                 <option value="1">Bat</option>
@@ -75,52 +92,53 @@
             </select>
         </div>
         <div class="col-12 col-md-4">
-        
-            <label for="GailuMotak" class="form-label" >BILATU</label>
-             <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Izena, mota, serie zenbakia..." aria-label="Search"/>
+
+            <label for="GailuMotak" class="form-label">BILATU</label>
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" placeholder="Izena, mota, serie zenbakia..."
+                    aria-label="Search" />
                 <button class="btn btn-outline-success" type="submit">BILATU</button>
             </form>
-    </div>
-   
-    <!-- TABLA DATUEIKIN -->
-   <div class="row">
-    <div class="col-12 g-5">
-        <table class="table table-hover">
-            <!-- TABLAREN TITULUAK -->
-            <thead class="table-secondary">
-                <tr>
-                    <th scope="col">Id gailua</th>
-                    <th scope="col">Izena</th>
-                    <th scope="col">Mota</th>
-                    <th scope="col">Serie zenbakia</th>
-                    <th scope="col">Ekintzak</th>
-                </tr>
-            </thead>
-            <!-- TABLAREN DATUAK -->
-       <tbody>
-    <tr th:each="gailua : ${gailuak}">
-        <th scope="row" th:text="${gailua.id_gailua}">ID</th>
-        <td th:text="${gailua.izena}">Izena</td>
-        <td th:text="${gailua.gailu_mota}">Mota</td>
-        <td th:text="${gailua.serie_zenbakia}">Seriea</td>
-        
-        <td>
-            <form th:if="${gailua.egoera == 'Erabilgarri'}" action="/alokatu" method="post">
-                <input type="hidden" name="id_gailua" th:value="${gailua.id_gailua}">
-                <button type="submit" class="btn btn-success btn-sm">Erabilgarri</button>
-            </form>
+        </div>
 
-            <button th:unless="${gailua.egoera == 'Erabilgarri'}" 
-                    class="btn btn-secondary btn-sm text-decoration-line-through opacity-50" 
-                    disabled>
-                Mailegatuta
-            </button>
-        </td>
-    </tr>
-        </tbody>
-        </table>
-    </div>    
-</div>
+        <!-- TABLA DATUEIKIN -->
+        <div class="row">
+            <div class="col-12 g-5">
+                <table class="table table-hover">
+                    <!-- TABLAREN TITULUAK -->
+                    <thead class="table-secondary">
+                        <tr>
+                            <th scope="col">Id gailua</th>
+                            <th scope="col">Izena</th>
+                            <th scope="col">Mota</th>
+                            <th scope="col">Serie zenbakia</th>
+                            <th scope="col">Ekintzak</th>
+                        </tr>
+                    </thead>
+                    <!-- TABLAREN DATUAK -->
+                    <tbody>
+                        <tr th:each="gailua : ${gailuak}">
+                            <th scope="row" th:text="${gailua.id_gailua}">ID</th>
+                            <td th:text="${gailua.izena}">Izena</td>
+                            <td th:text="${gailua.gailu_mota}">Mota</td>
+                            <td th:text="${gailua.serie_zenbakia}">Seriea</td>
+
+                            <td>
+                                <form th:if="${gailua.egoera == 'Erabilgarri'}" action="/alokatu" method="post">
+                                    <input type="hidden" name="id_gailua" th:value="${gailua.id_gailua}">
+                                    <button type="submit" class="btn btn-success btn-sm">Erabilgarri</button>
+                                </form>
+
+                                <button th:unless="${gailua.egoera == 'Erabilgarri'}"
+                                    class="btn btn-secondary btn-sm text-decoration-line-through opacity-50" disabled>
+                                    Mailegatuta
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
 </body>
+
 </html>
