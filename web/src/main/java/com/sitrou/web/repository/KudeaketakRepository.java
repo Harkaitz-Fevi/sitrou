@@ -3,17 +3,17 @@ package com.sitrou.web.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.sitrou.web.model.Gailua;
+import com.sitrou.web.model.Kudeaketa;
 
 
 @Repository // Spring-i esaten dio klase honek datu-basearekin komunikazioa kudeatzen duela
-public interface GailuaRepository extends JpaRepository<Gailua, String> {
+public interface KudeaketakRepository extends JpaRepository<Kudeaketa, Integer> {
    
     /* Hemen ez dugu metodorik idatzi behar momentuz.
        JpaRepository luzatzean, Spring-ek automatikoki ematen dizkigu:
-       - findAll(): Gailu guztiak zerrendan lortzeko.
-       - save(gailua): Gailu berri bat gordetzeko edo eguneratzeko.
-       - findById(id): Id baten bidez gailua bilatzeko.*/
-       /*- deleteById(id): Gailua ezabatzeko.*/
+       - findAll(): Gelak guztiak zerrendan lortzeko.
+       - save(gelak): Gelak berri bat gordetzeko edo eguneratzeko.
+       - findById(id): Id baten bidez gelak bilatzeko.*/
+       /*- deleteById(id): Gelak ezabatzeko.*/
     
 }
