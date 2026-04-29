@@ -182,7 +182,7 @@
                 <td>
                     <button class="btn btn-outline-primary btn-sm btn-accion">Editatu</button>
                     <form action="/gela-ezabatu" method="post" style="display:inline;">
-                        <input type="hidden" name="id_gela" th:value="${gela.id_gela}">
+                        <input type="hidden" name="id_gela" th:value="${gela?.id_gela}">
                         <button type="submit"
                             class="btn btn-outline-danger btn-sm btn-accion">Ezabatu</button>
                     </form>
