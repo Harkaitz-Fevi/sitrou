@@ -31,7 +31,7 @@ public class HasieraController {
     private final GelakRepository gelakRepository;
     private final EraikinakRepository eraikinakRepository;
     private final SolairuakRepository solairuakRepository; // <--- ESTA LÍNEA TE FALTA
-    
+
     @Autowired
     private KudeaketakRepository kudeaketakRepository;
 
@@ -131,14 +131,20 @@ public class HasieraController {
     @GetMapping("/gailuak")
     public String gailuak(Model model) {
         List<Gailua> gailuak = gailuaRepository.findAll();
+        //Eraikin guztiak lortzeko beharrezko lerroa da hau
+        List<Gelak> gelak = gelakRepository.findAll();
         model.addAttribute("gailuak", gailuak);
+        model.addAttribute("gelak", gelak);
         return "gailuak";
     }
 
     @GetMapping("/gelak")
     public String gelak(Model model) {
         List<Gelak> gelak = gelakRepository.findAll();
+        //Eraikin guztiak lortzeko beharrezko lerroa da hau
+        List<Eraikinak> eraikinak = eraikinakRepository.findAll();
         model.addAttribute("gelak", gelak);
+        model.addAttribute("eraikinak", eraikinak);
         return "gelak";
     }
 
@@ -190,7 +196,6 @@ public class HasieraController {
 
         Eraikinak er = eraikinakRepository.findById(id_eraikina).orElse(null);
         if (er != null) {
-            er.setIdEraikina(id_eraikina);
             er.setIzena(izena);
             er.setDeskribapena(deskribapena);
             er.setEkintza(ekintza);
@@ -254,8 +259,7 @@ public class HasieraController {
 
     @PostMapping("/gailua-ezabatu")
     public String gailuaEzabatu(@RequestParam String id_gailua) {
-        Gailua g = gailuaRepository.findById(id_gailua).orElse(null);
-        if (g != null) {
+        if (gailuaRepository.existsById(id_gailua)) {
             gailuaRepository.deleteById(id_gailua);
         }
         return "redirect:/gailuak";

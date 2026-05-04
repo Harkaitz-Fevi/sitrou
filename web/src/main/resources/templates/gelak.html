@@ -55,8 +55,8 @@
                                         th:href="@{/historikoa}">Historikoa</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="solairuak.html"
-                                        th:href="@{/solairuak}">Solairuak Kudeatu</a>
+                                    <a class="dropdown-item" href="solairuak.html" th:href="@{/solairuak}">Solairuak
+                                        Kudeatu</a>
                                 </li>
                             </ul>
                         </li>
@@ -76,28 +76,35 @@
     <h1>Administrazio Panela</h1><br>
     <ul class="nav custom-nav-pills mb-4" id="pills-tab" role="tablist">
         <li class="nav-item" role="presentation">
-            <button class="nav-link  btn btn-outline-light" id="eraikinak-tab" onclick="window.location.href='eraikinak.html'"
-            th:onclick="|window.location.href='@{/eraikinak}'|" data-bs-toggle="pill" type="button" role="tab">Eraikinak</button>
+            <button class="nav-link  btn btn-outline-light" id="eraikinak-tab"
+                onclick="window.location.href='eraikinak.html'" th:onclick="|window.location.href='@{/eraikinak}'|"
+                data-bs-toggle="pill" type="button" role="tab">Eraikinak</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link active btn btn-outline-light" id="gelak-tab" onclick="window.location.href='gelak.html'"
-            th:onclick="|window.location.href='@{/gelak}'|" data-bs-toggle="pill" type="button" role="tab">Gelak</button>
+            <button class="nav-link active btn btn-outline-light" id="gelak-tab"
+                onclick="window.location.href='gelak.html'" th:onclick="|window.location.href='@{/gelak}'|"
+                data-bs-toggle="pill" type="button" role="tab">Gelak</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link btn btn-outline-light" id="gailuak-tab" onclick="window.location.href='gailuak.html'"
-            th:onclick="|window.location.href='@{/gailuak}'|" data-bs-toggle="pill" type="button" role="tab">Gailuak</button>
+            <button class="nav-link btn btn-outline-light" id="gailuak-tab"
+                onclick="window.location.href='gailuak.html'" th:onclick="|window.location.href='@{/gailuak}'|"
+                data-bs-toggle="pill" type="button" role="tab">Gailuak</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link btn btn-outline-light" id="erabiltzaileak-tab" onclick="window.location.href='erabiltzaileak.html'"
-            th:onclick="|window.location.href='@{/erabiltzaileak}'|" data-bs-toggle="pill" type="button" role="tab">Erabiltzaileak</button>
+            <button class="nav-link btn btn-outline-light" id="erabiltzaileak-tab"
+                onclick="window.location.href='erabiltzaileak.html'"
+                th:onclick="|window.location.href='@{/erabiltzaileak}'|" data-bs-toggle="pill" type="button"
+                role="tab">Erabiltzaileak</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link btn btn-outline-light" id="historikoa-tab" onclick="window.location.href='historikoa.html'"
-            th:onclick="|window.location.href='@{/historikoa}'|" data-bs-toggle="pill" type="button" role="tab">Historikoa</button>
+            <button class="nav-link btn btn-outline-light" id="historikoa-tab"
+                onclick="window.location.href='historikoa.html'" th:onclick="|window.location.href='@{/historikoa}'|"
+                data-bs-toggle="pill" type="button" role="tab">Historikoa</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link btn btn-outline-light" id="solairuak-tab" onclick="window.location.href='solairuak.html'"
-            th:onclick="|window.location.href='@{/solairuak}'|" data-bs-toggle="pill" type="button" role="tab">Solairuak</button>
+            <button class="nav-link btn btn-outline-light" id="solairuak-tab"
+                onclick="window.location.href='solairuak.html'" th:onclick="|window.location.href='@{/solairuak}'|"
+                data-bs-toggle="pill" type="button" role="tab">Solairuak</button>
         </li>
     </ul><br>
     <!-- GELAREN GEHIKETA -->
@@ -113,8 +120,13 @@
 
                 <div class="col-md-2">
                     <div class="input-group input-group-md">
-                        <span class="input-group-text">ID ERAIKINA</span>
-                        <input type="text" name="id_eraikina" class="form-control" required>
+                        <span class="input-group-text">ERAIKINA</span>
+                        <select name="id_eraikina" class="form-select" required>
+                            <option value="" selected disabled>Hautatu...</option>
+                            <th:block th:each="eraikina : ${eraikinak}">
+                                <option th:value="${eraikina.idEraikina}" th:text="${eraikina.izena}"></option>
+                            </th:block>
+                        </select>
                     </div>
                 </div>
 
@@ -168,27 +180,28 @@
                             <td th:text="${gela.deskribapena}"></td>
                             <td th:text="${gela.ekintza}"></td>
                             <td>
-                                <button type="button" class="btn btn-outline-primary btn-sm btn-accion" 
-                                        data-bs-toggle="modal" 
-                                        th:attr="data-bs-target='#modalEdit'+${gela.Id_gela}">
-                                Editatu</button>
+                                <button type="button" class="btn btn-outline-primary btn-sm btn-accion"
+                                    data-bs-toggle="modal" th:attr="data-bs-target='#modalEdit'+${gela.Id_gela}">
+                                    Editatu</button>
 
                                 <form action="/gela-ezabatu" method="post" style="display:inline;">
                                     <input type="hidden" name="id_gela" th:value="${gela.id_gela}">
                                     <button type="button" class="btn btn-outline-danger btn-sm btn-accion"
-                                        data-bs-toggle="modal" 
-                                        th:attr="data-bs-target='#modalDelete'+${gela.Id_gela}">
-                                    Ezabatu</button>
-                                    <div class="modal fade" th:id="'modalDelete' + ${gela.Id_gela}" tabindex="-1" aria-hidden="true">
+                                        data-bs-toggle="modal" th:attr="data-bs-target='#modalDelete'+${gela.Id_gela}">
+                                        Ezabatu</button>
+                                    <div class="modal fade" th:id="'modalDelete' + ${gela.Id_gela}" tabindex="-1"
+                                        aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title">Ezabatu Gela</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
                                                     <p>Seguru zaude gela hau ezabatu nahi duzula?</p>
-                                                    <small class="text-muted">Izena: <span th:text="${gela.Izena}"></span></small>
+                                                    <small class="text-muted">Izena: <span
+                                                            th:text="${gela.Izena}"></span></small>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <form action="/gela-ezabatu" method="post" style="display:inline;">
@@ -199,39 +212,53 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="modal fade" th:id="'modalEdit' + ${gela.Id_gela}" tabindex="-1" aria-hidden="true">
+                                    <div class="modal fade" th:id="'modalEdit' + ${gela.Id_gela}" tabindex="-1"
+                                        aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h5 class="modal-title">Gela Aldatu</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
                                                 </div>
-                                                <form action="/gela-aldatu" method="post">
+                                                <form action="/gela-eguneratu" method="post">
                                                     <div class="modal-body">
                                                         <div class="mb-3">
                                                             <label class="form-label">ID Gela</label>
-                                                            <input type="text" name="Id_gela" class="form-control" th:value="${gela.Id_gela}" readonly>
+                                                            <input type="text" name="id_gela" class="form-control"
+                                                                th:value="${gela.Id_gela}" readonly>
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Eraikina</label>
+                                                                <select name="id_eraikina" class="form-select" required>
+                                                                    <th:block th:each="eraikina : ${eraikinak}">
+                                                                        <option th:value="${eraikina.idEraikina}"
+                                                                            th:text="${eraikina.izena}"
+                                                                            th:selected="${eraikina.idEraikina == gela.id_eraikina}">
+                                                                        </option>
+                                                                    </th:block>
+                                                                </select>
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Izena</label>
+                                                                <input type="text" name="izena" class="form-control"
+                                                                    th:value="${gela.Izena}">
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Deskribapena</label>
+                                                                <input type="text" name="deskribapena"
+                                                                    class="form-control"
+                                                                    th:value="${gela.Deskribapena}">
+                                                            </div>
+                                                            <div class="mb-3">
+                                                                <label class="form-label">Ekintza</label>
+                                                                <input type="text" name="ekintza" class="form-control"
+                                                                    th:value="${gela.Ekintza}">
+                                                            </div>
                                                         </div>
-                                                        <div class="mb-3">
-                                                            <label class="form-label">ID Eraikina</label>
-                                                            <input type="text" name="Id_eraikina" class="form-control" th:value="${gela.Id_eraikina}">
+                                                        <div class="modal-footer">
+                                                            <button type="submit" class="btn btn-primary">Gorde
+                                                                Aldaketak</button>
                                                         </div>
-                                                        <div class="mb-3">
-                                                            <label class="form-label">Izena</label>
-                                                            <input type="text" name="Izena" class="form-control" th:value="${gela.Izena}">
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <label class="form-label">Deskribapena</label>
-                                                            <input type="text" name="Deskribapena" class="form-control" th:value="${gela.Deskribapena}">
-                                                        </div>
-                                                        <div class="mb-3">
-                                                            <label class="form-label">Ekintza</label>
-                                                            <input type="text" name="Ekintza" class="form-control" th:value="${gela.Ekintza}">
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal-footer">
-                                                        <button type="submit" class="btn btn-primary">Gorde Aldaketak</button>
-                                                    </div>
                                                 </form>
                                             </div>
                                         </div>

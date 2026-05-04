@@ -176,11 +176,11 @@
                                             <h5 class="modal-title">Eraikina Aldatu</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
-                                        <form th:action="@{/eraikinak-aldatu}" method="post">
+                                        <form th:action="@{/eraikinak-eguneratu}" method="post">
                                             <div class="modal-body" style="text-align: left;">
                                                 <div class="mb-3">
                                                     <label class="form-label">ID Eraikina</label>
-                                                    <input type="text" name="idEraikina" class="form-control" th:value="${er.idEraikina}" readonly>
+                                                    <input type="text" name="id_eraikina" class="form-control" th:value="${er.idEraikina}" readonly>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label class="form-label">Izena</label>
