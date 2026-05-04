@@ -159,28 +159,28 @@
             <table class="table table-hover w-75 text-center align-middle">
                 <thead class="table-secondary">
                     <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">Usuarioa</th>
-                        <th scope="col">Pasahitza</th>
-                        <th scope="col">Rola</th>
+                        <th scope="col">ID Solairua</th>
+                        <th scope="col">ID Eraikina</th>
+                        <th scope="col">Deskribapena</th>
+                        <th scope="col">Solairu Zenbakia</th>
                         <th scope="col">Ekintza</th>
                     </tr>
                 </thead>
                
                 <tbody>
-                    <tr th:each="erabiltzailea : ${erabiltzaileak}">
-                        <th scope="row" th:text="${erabiltzailea.id_erabiltzailea}"></th>
-                        <td th:text="${erabiltzailea.usuarioa}"></td>
-                        <td th:text="${erabiltzailea.pasahitza}"></td>
-                        <td th:text="${erabiltzailea.rola}"></td>
-                        <td>
-                            <button class="btn btn-outline-primary btn-sm btn-accion">Editatu</button>
-                            <form action="/erabiltzailea-ezabatu" method="post" style="display:inline;">
-                                <input type="hidden" name="id" th:value="${erabiltzailea.id_erabiltzailea}">
-                                <button type="submit" class="btn btn-outline-danger btn-sm btn-accion">Ezabatu</button>
-                            </form>
-                        </td>
-                    </tr>
+                    <tr th:each="solairua : ${solairuak}">
+                        <th scope="row" th:text="${solairua.id_solairua}"></th>
+                            <td th:text="${solairua.id_eraikina}"></td>
+                            <td th:text="${solairua.deskribapena}"></td>
+                            <td th:text="${solairua.solairu_zenb}"></td>
+                            <td>
+                                <button class="btn btn-outline-primary btn-sm btn-accion">Editatu</button>
+                                <form action="/solairua-ezabatu" method="post" style="display:inline;">
+                                    <input type="hidden" name="id" th:value="${solairua.id_solairua}">
+                                    <button type="submit" class="btn btn-outline-danger btn-sm btn-accion">Ezabatu</button>
+                                </form>
+                            </td>
+                        </tr>
                 </tbody>
             </table>
         </div>
