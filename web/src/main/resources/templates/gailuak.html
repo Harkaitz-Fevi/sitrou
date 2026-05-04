@@ -113,13 +113,13 @@
                 <div class="row align-items-center mb-4">
                     <div class="col-12 col-md-2">
                         <div class="input-group">
-                            <span class="input-group-text" id="id-eraikina">ID GAILUA</span>
+                            <span class="input-group-text" id="id-gailua">ID GAILUA</span>
                             <input type="text" name="id_gailua" class="form-control" required>
                         </div>
                     </div>
 
                     <div class="col-md-2">
-                        <label class="form-label">GELA (Desplegable)</label>
+                        <span class="input-group-text" id="id-gela">ID GELA</span>
                         <select name="Id_gela" class="form-select" required>
                             <option value="" disabled selected>Hautatu gela...</option>
                             <option th:each="gela : ${gelak}" th:value="${gela.id_gela}" th:text="${gela.izena}">
@@ -129,7 +129,7 @@
 
                     <div class="col-12 col-md-3">
                         <div class="input-group">
-                            <span class="input-group-text" id="deskribapena">IZENA</span>
+                            <span class="input-group-text" id="izena">IZENA</span>
                             <input type="text" name="izena" class="form-control" required>
                         </div>
                     </div>
@@ -143,22 +143,22 @@
                 <div class="row align-items-center mb-4">
                     <div class="col-12 col-md-2">
                         <div class="input-group">
-                            <span class="input-group-text" id="id-eraikina">MOTA</span>
+                            <span class="input-group-text" id="mota">MOTA</span>
                             <input type="text" name="mota" class="form-control" required>
                         </div>
                     </div>
 
                     <div class="col-12 col-md-3">
                         <div class="input-group">
-                            <span class="input-group-text" id="izena">SERIE ZENBAKIA</span>
-                            <input type="text" name="izena" class="form-control" required>
+                            <span class="input-group-text" id="serie">SERIE ZENBAKIA</span>
+                            <input type="text" name="serie" class="form-control" required>
                         </div>
                     </div>
 
                     <div class="col-12 col-md-3">
                         <div class="input-group">
-                            <span class="input-group-text" id="deskribapena">EGOERA</span>
-                            <input type="text" name="deskribapena" class="form-control" required>
+                            <span class="input-group-text" id="egoera">EGOERA</span>
+                            <input type="text" name="egoera" class="form-control" required>
                         </div>
                     </div>
                     <div class="col-md-1 d-grid">
@@ -202,7 +202,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
-                                <form action="/gailua-aldatu" method="post">
+                                <form action="/gailua-eguneratu" method="post">
                                     <div class="modal-body">
                                         <div class="mb-3">
                                             <label class="form-label">ID Gailua</label>
@@ -221,12 +221,12 @@
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Gailu Mota</label>
-                                            <input type="text" name="gailu_mota" class="form-control"
+                                            <input type="text" name="mota" class="form-control"
                                                 th:value="${gailua.gailu_mota}">
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Serie Zenbakia</label>
-                                            <input type="text" name="serie_zenbakia" class="form-control"
+                                            <input type="text" name="serie" class="form-control"
                                                 th:value="${gailua.serie_zenbakia}">
                                         </div>
                                         <div class="mb-3">
