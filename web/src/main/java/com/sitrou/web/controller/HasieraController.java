@@ -213,19 +213,20 @@ public class HasieraController {
     // GAILUAK KONTROLATZEKO METODOAK
     // ==========================================
     @PostMapping("/gailua-gehitu")
-    public String gailuaGehitu(@RequestParam String id,
-            @RequestParam String gela,
+    public String gailuaGehitu(@RequestParam String id_gailua,
+            @RequestParam String id_gela,
             @RequestParam String izena,
             @RequestParam String mota,
-            @RequestParam String serie) {
+            @RequestParam String serie,
+            @RequestParam String egoera) {
 
         Gailua g = new Gailua();
-        g.setId_gailua(id);
-        g.setId_gela(gela);
+        g.setId_gailua(id_gailua);
+        g.setId_gela(id_gela);
         g.setIzena(izena);
         g.setGailu_mota(mota);
         g.setSerie_zenbakia(serie);
-        g.setEgoera("Alokagarri");
+        g.setEgoera(egoera);
 
         gailuaRepository.save(g);
         return "redirect:/gailuak";
