@@ -65,6 +65,7 @@ public class Eraikinak {
     }
     public void setDeskribapena(String deskribapena) { 
         this.deskribapena = deskribapena; 
+
     }
 
     public String getEkintza() { 

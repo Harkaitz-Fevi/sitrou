@@ -158,12 +158,71 @@
                         <td th:text="${er.deskribapena}">Edificio principal</td>
                         <td th:text="${er.ekintza}">Aktiboa</td>
                         <td>
-                            <button class="btn btn-outline-primary btn-sm btn-accion">Editatu</button>
+                            <button class="btn btn-outline-primary btn-sm btn-accion"
+                            data-bs-toggle="modal" 
+                            th:attr="data-bs-target='#modalEdit'+${er.idEraikina}">Editatu</button>
 
                             <form th:action="@{/eraikinak-ezabatu}" method="post" style="display: inline-block;">
                                 <input type="hidden" name="id_eraikina" th:value="${er.idEraikina}">
-                                <button type="submit" class="btn btn-outline-danger btn-sm btn-accion">Ezabatu</button>
+                                <button type="button" class="btn btn-outline-danger btn-sm btn-accion"
+                                data-bs-toggle="modal" 
+                                th:attr="data-bs-target='#modalDelete'+${er.idEraikina}"
+                                >Ezabatu</button>
                             </form>
+                            <div class="modal fade" th:id="'modalEdit' + ${er.idEraikina}" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Eraikina Aldatu</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <form th:action="@{/eraikinak-aldatu}" method="post">
+                                            <div class="modal-body" style="text-align: left;">
+                                                <div class="mb-3">
+                                                    <label class="form-label">ID Eraikina</label>
+                                                    <input type="text" name="idEraikina" class="form-control" th:value="${er.idEraikina}" readonly>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">Izena</label>
+                                                    <input type="text" name="izena" class="form-control" th:value="${er.izena}">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">Deskribapena</label>
+                                                    <input type="text" name="deskribapena" class="form-control" th:value="${er.deskribapena}">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">Ekintza</label>
+                                                    <input type="text" name="ekintza" class="form-control" th:value="${er.ekintza}">
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-primary">Gorde Aldaketak</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal fade" th:id="'modalDelete' + ${er.idEraikina}" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Ezabatu Eraikina</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body" style="text-align: left;">
+                                            <p>Seguru zaude eraikin hau ezabatu nahi duzula?</p>
+                                            <small class="text-muted">Izena: <span th:text="${er.izena}"></span></small>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <form th:action="@{/eraikinak-ezabatu}" method="post" style="display:inline;">
+                                                <input type="hidden" name="id_eraikina" th:value="${er.idEraikina}">
+                                                <button type="submit" class="btn btn-danger">Ezabatu</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                 </tbody>

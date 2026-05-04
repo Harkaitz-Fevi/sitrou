@@ -153,10 +153,10 @@
                         <tr>
                             <th scope="col">Id gela</th>
                             <th scope="col">Eraikina</th>
-                            <th scope="col">Solairua</th>
                             <th scope="col">Gelaren izena</th>
                             <th scope="col">Deskribapena</th>
                             <th scope="col">Ekintza</th>
+                            <th scope="col">Aukerak</th>
                         </tr>
                     </thead>
 
@@ -168,11 +168,74 @@
                             <td th:text="${gela.deskribapena}"></td>
                             <td th:text="${gela.ekintza}"></td>
                             <td>
-                                <button class="btn btn-outline-primary btn-sm btn-accion">Editatu</button>
+                                <button type="button" class="btn btn-outline-primary btn-sm btn-accion" 
+                                        data-bs-toggle="modal" 
+                                        th:attr="data-bs-target='#modalEdit'+${gela.Id_gela}">
+                                Editatu</button>
+
                                 <form action="/gela-ezabatu" method="post" style="display:inline;">
                                     <input type="hidden" name="id_gela" th:value="${gela.id_gela}">
-                                    <button type="submit"
-                                        class="btn btn-outline-danger btn-sm btn-accion">Ezabatu</button>
+                                    <button type="button" class="btn btn-outline-danger btn-sm btn-accion"
+                                        data-bs-toggle="modal" 
+                                        th:attr="data-bs-target='#modalDelete'+${gela.Id_gela}">
+                                    Ezabatu</button>
+                                    <div class="modal fade" th:id="'modalDelete' + ${gela.Id_gela}" tabindex="-1" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Ezabatu Gela</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Seguru zaude gela hau ezabatu nahi duzula?</p>
+                                                    <small class="text-muted">Izena: <span th:text="${gela.Izena}"></span></small>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <form action="/gela-ezabatu" method="post" style="display:inline;">
+                                                        <input type="hidden" name="id" th:value="${gela.Id_gela}">
+                                                        <button type="submit" class="btn btn-danger">Ezabatu</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal fade" th:id="'modalEdit' + ${gela.Id_gela}" tabindex="-1" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Gela Aldatu</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <form action="/gela-aldatu" method="post">
+                                                    <div class="modal-body">
+                                                        <div class="mb-3">
+                                                            <label class="form-label">ID Gela</label>
+                                                            <input type="text" name="Id_gela" class="form-control" th:value="${gela.Id_gela}" readonly>
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label class="form-label">ID Eraikina</label>
+                                                            <input type="text" name="Id_eraikina" class="form-control" th:value="${gela.Id_eraikina}">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label class="form-label">Izena</label>
+                                                            <input type="text" name="Izena" class="form-control" th:value="${gela.Izena}">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label class="form-label">Deskribapena</label>
+                                                            <input type="text" name="Deskribapena" class="form-control" th:value="${gela.Deskribapena}">
+                                                        </div>
+                                                        <div class="mb-3">
+                                                            <label class="form-label">Ekintza</label>
+                                                            <input type="text" name="Ekintza" class="form-control" th:value="${gela.Ekintza}">
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-primary">Gorde Aldaketak</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </form>
                             </td>
                         </tr>

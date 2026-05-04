@@ -180,11 +180,80 @@
                 <td th:text="${gailua.serie_zenbakia}"></td>
                 <td th:text="${gailua.egoera}"></td>
                 <td>
-                    <button class="btn btn-outline-primary btn-sm btn-accion">Editatu</button>
+                    <button type="button" class="btn btn-outline-primary btn-sm btn-accion" 
+                        data-bs-toggle="modal" 
+                        th:attr="data-bs-target='#modalEdit'+${gailua.id_gailua}">
+                    Editatu
+                    </button>
+
+                    <div class="modal fade" th:id="'modalEdit' + ${gailua.id_gailua}" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Gailua Aldatu</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <form action="/gailua-aldatu" method="post">
+                                    <div class="modal-body">
+                                        <div class="mb-3">
+                                            <label class="form-label">ID Gailua</label>
+                                            <input type="text" name="id_gailua" class="form-control" th:value="${gailua.id_gailua}" readonly>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">ID Gela</label>
+                                            <input type="text" name="id_gela" class="form-control" th:value="${gailua.id_gela}">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Izena</label>
+                                            <input type="text" name="izena" class="form-control" th:value="${gailua.izena}">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Gailu Mota</label>
+                                            <input type="text" name="gailu_mota" class="form-control" th:value="${gailua.gailu_mota}">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Serie Zenbakia</label>
+                                            <input type="text" name="serie_zenbakia" class="form-control" th:value="${gailua.serie_zenbakia}">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Egoera</label>
+                                            <input type="text" name="egoera" class="form-control" th:value="${gailua.egoera}">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary">Gorde Aldaketak</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                     <form action="/gela-ezabatu" method="post" style="display:inline;">
                         <input type="hidden" name="id_gela" th:value="${gela?.id_gela}">
-                        <button type="submit"
-                            class="btn btn-outline-danger btn-sm btn-accion">Ezabatu</button>
+                        <button type="button" class="btn btn-outline-danger btn-sm btn-accion" 
+                                data-bs-toggle="modal" 
+                                th:attr="data-bs-target='#modalDelete'+${gailua.id_gailua}">
+                        Ezabatu
+                        </button>
+                        <div class="modal fade" th:id="'modalDelete' + ${gailua.id_gailua}" tabindex="-1" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Ezabatu Gailua</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Seguru zaude gailu hau ezabatu nahi duzula?</p>
+                                        <small class="text-muted text-align-center">Izena: <span th:text="${gailua.izena}"></span></small>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <form action="/gailua-ezabatu" method="post" style="display:inline;">
+                                            <input type="hidden" name="id" th:value="${gailua.id_gailua}">
+                                            <button type="submit" class="btn btn-danger">Ezabatu</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </form>
                 </td>
             </tr>
