@@ -76,98 +76,78 @@
     <h1>Administrazio Panela</h1><br>
     <ul class="nav custom-nav-pills mb-4" id="pills-tab" role="tablist">
         <li class="nav-item" role="presentation">
-            <button class="nav-link  btn btn-outline-light" id="eraikinak-tab"
-                onclick="window.location.href='eraikinak.html'" th:onclick="|window.location.href='@{/eraikinak}'|"
-                data-bs-toggle="pill" type="button" role="tab">Eraikinak</button>
+            <a class="nav-link btn btn-outline-light" id="eraikinak-tab" th:href="@{/eraikinak}"
+                role="tab">Eraikinak</a>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link btn btn-outline-light" id="gelak-tab" onclick="window.location.href='gelak.html'"
-                th:onclick="|window.location.href='@{/gelak}'|" data-bs-toggle="pill" type="button"
-                role="tab">Gelak</button>
+            <a class="nav-link btn btn-outline-light" id="gelak-tab" th:href="@{/gelak}"
+                role="tab">Gelak</a>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link active btn btn-outline-light" id="gailuak-tab"
-                onclick="window.location.href='gailuak.html'" th:onclick="|window.location.href='@{/gailuak}'|"
-                data-bs-toggle="pill" type="button" role="tab">Gailuak</button>
+            <a class="nav-link active btn btn-outline-light" id="gailuak-tab" th:href="@{/gailuak}"
+                role="tab">Gailuak</a>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link btn btn-outline-light" id="erabiltzaileak-tab"
-                onclick="window.location.href='erabiltzaileak.html'"
-                th:onclick="|window.location.href='@{/erabiltzaileak}'|" data-bs-toggle="pill" type="button"
-                role="tab">Erabiltzaileak</button>
+            <a class="nav-link btn btn-outline-light" id="erabiltzaileak-tab" th:href="@{/erabiltzaileak}"
+                role="tab">Erabiltzaileak</a>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link btn btn-outline-light" id="historikoa-tab"
-                onclick="window.location.href='historikoa.html'" th:onclick="|window.location.href='@{/historikoa}'|"
-                data-bs-toggle="pill" type="button" role="tab">Historikoa</button>
+            <a class="nav-link btn btn-outline-light" id="historikoa-tab" th:href="@{/historikoa}"
+                role="tab">Historikoa</a>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link btn btn-outline-light" id="solairuak-tab"
-                onclick="window.location.href='solairuak.html'" th:onclick="|window.location.href='@{/solairuak}'|"
-                data-bs-toggle="pill" type="button" role="tab">Solairuak</button>
+            <a class="nav-link btn btn-outline-light" id="solairuak-tab" th:href="@{/solairuak}"
+                role="tab">Solairuak</a>
         </li>
     </ul><br>
     <div class="row">
-        <div class="col-12">
-            <form th:action="@{/gailuak-gehitu}" method="post">
-                <div class="row align-items-center mb-4">
-                    <div class="col-12 col-md-2">
-                        <div class="input-group">
-                            <span class="input-group-text" id="id-gailua">ID GAILUA</span>
-                            <input type="text" name="id_gailua" class="form-control" required>
-                        </div>
-                    </div>
-
-                    <div class="col-md-2">
-                        <span class="input-group-text" id="id-gela">ID GELA</span>
-                        <select name="Id_gela" class="form-select" required>
-                            <option value="" disabled selected>Hautatu gela...</option>
-                            <option th:each="gela : ${gelak}" th:value="${gela.id_gela}" th:text="${gela.izena}">
-                            </option>
-                        </select>
-                    </div>
-
-                    <div class="col-12 col-md-3">
-                        <div class="input-group">
-                            <span class="input-group-text" id="izena">IZENA</span>
-                            <input type="text" name="izena" class="form-control" required>
-                        </div>
-                    </div>
+    <div class="col-12">
+        <form th:action="@{/gailua-gehitu}" method="post">
+            <div class="row align-items-end mb-4">
+                <div class="col-md-2">
+                    <label class="form-label">ID GAILUA</label>
+                    <input type="text" name="id_gailua" class="form-control" required>
                 </div>
-            </form>
-        </div>
+
+                <div class="col-md-2">
+                    <label class="form-label">GELA</label>
+                    <select name="id_gela" class="form-select" required>
+                        <option value="" disabled selected>Hautatu...</option>
+                        <option th:each="gela : ${gelak}" th:value="${gela.id_gela}" th:text="${gela.izena}"></option>
+                    </select>
+                </div>
+
+                <div class="col-md-2">
+                    <label class="form-label">IZENA</label>
+                    <input type="text" name="izena" class="form-control" required>
+                </div>
+
+                <div class="col-md-2">
+                    <label class="form-label">MOTA</label>
+                    <input type="text" name="mota" class="form-control" required>
+                </div>
+
+                <div class="col-md-2">
+                    <label class="form-label">SERIE</label>
+                    <input type="number" name="serie" class="form-control" required placeholder="12345">
+                </div>
+
+                <div class="col-md-1">
+                    <label class="form-label">EGOERA</label>
+                    <select name="egoera" class="form-select" required>
+                        <option value="Erabilgarri" selected>Erabilgarri</option>
+                        <option value="Mailegatuta">Mailegatuta</option>
+                        <option value="Konpontzen">Konpontzen</option>
+                    </select>
+                </div>
+
+                <div class="col-md-1">
+                    <button type="submit" class="btn btn-outline-success w-100">Gehitu</button>
+                </div>
+            </div>
+        </form>
     </div>
-    <div class="row">
-        <div class="col-12">
-            <form th:action="@{/gailuak-gehitu}" method="post">
-                <div class="row align-items-center mb-4">
-                    <div class="col-12 col-md-2">
-                        <div class="input-group">
-                            <span class="input-group-text" id="mota">MOTA</span>
-                            <input type="text" name="mota" class="form-control" required>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-3">
-                        <div class="input-group">
-                            <span class="input-group-text" id="serie">SERIE ZENBAKIA</span>
-                            <input type="text" name="serie" class="form-control" required>
-                        </div>
-                    </div>
-
-                    <div class="col-12 col-md-3">
-                        <div class="input-group">
-                            <span class="input-group-text" id="egoera">EGOERA</span>
-                            <input type="text" name="egoera" class="form-control" required>
-                        </div>
-                    </div>
-                    <div class="col-md-1 d-grid">
-                        <button type="submit" class="btn btn-outline-success btn-accion">Gehitu</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div><br>
+</div><br>
     <table class="table table-striped">
         <thead>
             <tr>
@@ -202,7 +182,7 @@
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
-                                <form action="/gailua-eguneratu" method="post">
+                                <form th:action="@{/gailua-eguneratu}" method="post">
                                     <div class="modal-body">
                                         <div class="mb-3">
                                             <label class="form-label">ID Gailua</label>
@@ -211,8 +191,14 @@
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">ID Gela</label>
-                                            <input type="text" name="id_gela" class="form-control"
-                                                th:value="${gailua.id_gela}">
+                                            <select name="id_gela" class="form-select" required>
+                                                <th:block th:each="gela : ${gelak}">
+                                                        <option th:value="${gela.id_gela}"
+                                                              th:text="${gela.id_gela}"
+                                                              th:selected="${gela.id_gela == gailua.id_gela}">
+                                                        </option>
+                                                </th:block>
+                                            </select>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Izena</label>
@@ -226,13 +212,16 @@
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Serie Zenbakia</label>
-                                            <input type="text" name="serie" class="form-control"
-                                                th:value="${gailua.serie_zenbakia}">
+                                            <input type="number" name="serie" class="form-control"
+                                                th:value="${gailua.serie_zenbakia}" required>
                                         </div>
                                         <div class="mb-3">
                                             <label class="form-label">Egoera</label>
-                                            <input type="text" name="egoera" class="form-control"
-                                                th:value="${gailua.egoera}">
+                                            <select name="egoera" class="form-select" required>
+                                                <option value="Erabilgarri" th:selected="${gailua.egoera == 'Erabilgarri'}">Erabilgarri</option>
+                                                <option value="Mailegatuta" th:selected="${gailua.egoera == 'Mailegatuta'}">Mailegatuta</option>
+                                                <option value="Konpontzen" th:selected="${gailua.egoera == 'Konpontzen'}">Konpontzen</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -242,8 +231,6 @@
                             </div>
                         </div>
                     </div>
-                    <form action="/gela-ezabatu" method="post" style="display:inline;">
-                        <input type="hidden" name="id_gela" th:value="${gela?.id_gela}">
                         <button type="button" class="btn btn-outline-danger btn-sm btn-accion" data-bs-toggle="modal"
                             th:attr="data-bs-target='#modalDelete'+${gailua.id_gailua}">
                             Ezabatu
@@ -263,15 +250,14 @@
                                                 th:text="${gailua.izena}"></span></small>
                                     </div>
                                     <div class="modal-footer">
-                                        <form action="/gailua-ezabatu" method="post" style="display:inline;">
-                                            <input type="hidden" name="id" th:value="${gailua.id_gailua}">
+                                        <form th:action="@{/gailua-ezabatu}" method="post" style="display:inline;">
+                                            <input type="hidden" name="id_gailua" th:value="${gailua.id_gailua}">
                                             <button type="submit" class="btn btn-danger">Ezabatu</button>
-                                        </form>
+                                        </form> 
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </form>
                 </td>
             </tr>
         </tbody>

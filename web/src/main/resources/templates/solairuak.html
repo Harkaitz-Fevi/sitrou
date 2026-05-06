@@ -55,8 +55,8 @@
                                         th:href="@{/historikoa}">Historikoa</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="solairuak.html"
-                                        th:href="@{/solairuak}">Solairuak Kudeatu</a>
+                                    <a class="dropdown-item" href="solairuak.html" th:href="@{/solairuak}">Solairuak
+                                        Kudeatu</a>
                                 </li>
                             </ul>
                         </li>
@@ -77,84 +77,97 @@
 
     <ul class="nav custom-nav-pills mb-4" id="pills-tab" role="tablist">
         <li class="nav-item" role="presentation">
-            <button class="nav-link  btn btn-outline-light" id="eraikinak-tab" onclick="window.location.href='eraikinak.html'"
-            th:onclick="|window.location.href='@{/eraikinak}'|" data-bs-toggle="pill" type="button" role="tab">Eraikinak</button>
+            <button class="nav-link  btn btn-outline-light" id="eraikinak-tab"
+                onclick="window.location.href='eraikinak.html'" th:onclick="|window.location.href='@{/eraikinak}'|"
+                data-bs-toggle="pill" type="button" role="tab">Eraikinak</button>
         </li>
         <li class="nav-item" role="presentation">
             <button class="nav-link btn btn-outline-light" id="gelak-tab" onclick="window.location.href='gelak.html'"
-            th:onclick="|window.location.href='@{/gelak}'|" data-bs-toggle="pill" type="button" role="tab">Gelak</button>
+                th:onclick="|window.location.href='@{/gelak}'|" data-bs-toggle="pill" type="button"
+                role="tab">Gelak</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link btn btn-outline-light" id="gailuak-tab" onclick="window.location.href='gailuak.html'"
-            th:onclick="|window.location.href='@{/gailuak}'|" data-bs-toggle="pill" type="button" role="tab">Gailuak</button>
+            <button class="nav-link btn btn-outline-light" id="gailuak-tab"
+                onclick="window.location.href='gailuak.html'" th:onclick="|window.location.href='@{/gailuak}'|"
+                data-bs-toggle="pill" type="button" role="tab">Gailuak</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link btn btn-outline-light" id="erabiltzaileak-tab" onclick="window.location.href='erabiltzaileak.html'"
-            th:onclick="|window.location.href='@{/erabiltzaileak}'|" data-bs-toggle="pill" type="button" role="tab">Erabiltzaileak</button>
+            <button class="nav-link btn btn-outline-light" id="erabiltzaileak-tab"
+                onclick="window.location.href='erabiltzaileak.html'"
+                th:onclick="|window.location.href='@{/erabiltzaileak}'|" data-bs-toggle="pill" type="button"
+                role="tab">Erabiltzaileak</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link btn btn-outline-light" id="historikoa-tab" onclick="window.location.href='historikoa.html'"
-            th:onclick="|window.location.href='@{/historikoa}'|" data-bs-toggle="pill" type="button" role="tab">Historikoa</button>
+            <button class="nav-link btn btn-outline-light" id="historikoa-tab"
+                onclick="window.location.href='historikoa.html'" th:onclick="|window.location.href='@{/historikoa}'|"
+                data-bs-toggle="pill" type="button" role="tab">Historikoa</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link active btn btn-outline-light" id="solairuak-tab" onclick="window.location.href='solairuak.html'"
-            th:onclick="|window.location.href='@{/solairuak}'|" data-bs-toggle="pill" type="button" role="tab">Solairuak</button>
+            <button class="nav-link active btn btn-outline-light" id="solairuak-tab"
+                onclick="window.location.href='solairuak.html'" th:onclick="|window.location.href='@{/solairuak}'|"
+                data-bs-toggle="pill" type="button" role="tab">Solairuak</button>
         </li>
     </ul><br>
-        <br><br>
-        <form th:action="@{/erabiltzailea-gehitu}" method="post">
-            <div class="row g-2 align-items-center mb-4">
-                <div class="col-md-2">
-                    <div class="input-group">
-                        <span class="input-group-text">ID_SOLAIRUA</span>
-                        <input type="text" name="id_erabiltzailea" class="form-control" placeholder="Automatikoa" readonly>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="input-group">
-                        <span class="input-group-text">ID ERAIKINA</span>
-                        <input type="text" name="usuarioa" class="form-control" required>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="input-group">
-                        <span class="input-group-text">DESKRIBAPENA</span>
-                        <input type="password" name="pasahitza" class="form-control" required>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <div class="input-group">
-                        <span class="input-group-text">SOLAIRU ZENBAKIA</span>
-                        <input type="password" name="pasahitza" class="form-control" required>
-                    </div>
-                </div>
-                <div class="col-md-1 d-grid">
-                    <button type="submit" class="btn btn-outline-success btn-accion">Gehitu</button>
+    <br><br>
+    <form th:action="@{/solairua-gehitu}" method="post">
+        <div class="row g-2 align-items-center mb-4">
+            <div class="col-md-2">
+                <div class="input-group">
+                    <span class="input-group-text">ID_SOLAIRUA</span>
+                    <input type="text" name="id_solairua" class="form-control" placeholder="Sartu IDa" required>
                 </div>
             </div>
-        </form>
+            <div class="col-md-2">
+                <div class="input-group input-group-md">
+                    <span class="input-group-text">ERAIKINA</span>
+                    <select name="id_eraikina" class="form-select" required>
+                        <option value="" selected disabled>Hautatu...</option>
+                        <th:block th:each="eraikina : ${eraikinak}">
+                            <option th:value="${eraikina.idEraikina}" th:text="${eraikina.izena}"></option>
+                        </th:block>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="input-group">
+                    <span class="input-group-text">DESKRIBAPENA</span>
+                    <input type="text" name="deskribapena" class="form-control" required>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <div class="input-group">
+                    <span class="input-group-text">SOLAIRU ZENBAKIA</span>
+                    <input type="number" name="solairu_zenb" class="form-control" required>
+                </div>
+            </div>
+            <div class="col-md-1 d-grid">
+                <button type="submit" class="btn btn-outline-success btn-accion">Gehitu</button>
+            </div>
+        </div>
+    </form>
 
-        <br>
+    <br>
 
-        <div class="col-md-8 mb-4">
-            <div class="d-flex align-items-center" style="gap: 150px;">
-                <label class="form-label mb-0 me-3 text-secondary fw-bold text-nowrap" style="font-size: 0.9rem;">
-                    Bilatu solairuaren ID solairua, izena... :
-                </label>
+    <div class="col-md-8 mb-4">
+        <div class="d-flex align-items-center" style="gap: 150px;">
+            <label class="form-label mb-0 me-3 text-secondary fw-bold text-nowrap" style="font-size: 0.9rem;">
+                Bilatu solairuaren ID solairua, izena... :
+            </label>
 
-                <div class="search-box-modern flex-grow-1">
-                    <div class="input-group shadow-sm">
-                        <span class="input-group-text bg-white border-end-0">
-                            <i class="bi bi-search text-primary"></i>
-                        </span>
-                        <input type="text" id="searchInput" class="form-control border-start-0" placeholder="Bilatu..." aria-label="Search">
-                    </div>
+            <div class="search-box-modern flex-grow-1">
+                <div class="input-group shadow-sm">
+                    <span class="input-group-text bg-white border-end-0">
+                        <i class="bi bi-search text-primary"></i>
+                    </span>
+                    <input type="text" id="searchInput" class="form-control border-start-0" placeholder="Bilatu..."
+                        aria-label="Search">
                 </div>
             </div>
         </div>
+    </div>
 
-<!-- Taula -->
-        <div class="row justify-content-center">
+    <!-- Taula -->
+    <div class="row justify-content-center">
         <div class="col-12 d-flex justify-content-center g-5">
             <table class="table table-hover w-75 text-center align-middle">
                 <thead class="table-secondary">
@@ -166,80 +179,91 @@
                         <th scope="col">Ekintza</th>
                     </tr>
                 </thead>
-               
+
                 <tbody>
                     <tr th:each="solairua : ${solairuak}">
                         <th scope="row" th:text="${solairua.id_solairua}"></th>
-                            <td th:text="${solairua.id_eraikina}"></td>
-                            <td th:text="${solairua.deskribapena}"></td>
-                            <td th:text="${solairua.solairu_zenb}"></td>
-                            <td>
-                                <button class="btn btn-outline-primary btn-sm btn-accion"
-                                    data-bs-toggle="modal" 
-                                    th:attr="data-bs-target='#modalEdit'+${solairua.id_solairua}">Editatu
-                                </button>
-                                <div class="modal fade" th:id="'modalEdit' + ${solairua.id_solairua}" tabindex="-1" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title">Solairua Aldatu</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <td th:text="${solairua.id_eraikina}"></td>
+                        <td th:text="${solairua.deskribapena}"></td>
+                        <td th:text="${solairua.solairu_zenb}"></td>
+                        <td>
+                            <button class="btn btn-outline-primary btn-sm btn-accion" data-bs-toggle="modal"
+                                th:attr="data-bs-target='#modalEdit'+${solairua.id_solairua}">Editatu
+                            </button>
+                            <div class="modal fade" th:id="'modalEdit' + ${solairua.id_solairua}" tabindex="-1"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Solairua Aldatu</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <form action="/solairua-eguneratu" method="post">
+                                            <div class="modal-body">
+                                                <div class="mb-3">
+                                                    <label class="form-label">ID Solairua</label>
+                                                    <input type="text" name="id_solairua" class="form-control"
+                                                        th:value="${solairua.id_solairua}" readonly>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">Eraikina</label>
+                                                    <select name="id_eraikina" class="form-select" required>
+                                                        <th:block th:each="eraikina : ${eraikinak}">
+                                                            <option th:value="${eraikina.idEraikina}"
+                                                                th:text="${eraikina.izena}"
+                                                                th:selected="${eraikina.idEraikina == solairua.id_eraikina}">
+                                                            </option>
+                                                        </th:block>
+                                                    </select>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">Deskribapena</label>
+                                                    <input type="text" name="deskribapena" class="form-control"
+                                                        th:value="${solairua.deskribapena}">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">Solairu Zenbakia</label>
+                                                    <input type="number" name="solairu_zenb" class="form-control"
+                                                        th:value="${solairua.solairu_zenb}">
+                                                </div>
                                             </div>
-                                            <form action="/solairua-aldatu" method="post">
-                                                <div class="modal-body">
-                                                    <div class="mb-3">
-                                                        <label class="form-label">ID Solairua</label>
-                                                        <input type="text" name="id_solairua" class="form-control" th:value="${solairua.id_solairua}" readonly>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label class="form-label">ID Eraikina</label>
-                                                        <input type="text" name="id_eraikina" class="form-control" th:value="${solairua.id_eraikina}">
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label class="form-label">Deskribapena</label>
-                                                        <input type="text" name="deskribapena" class="form-control" th:value="${solairua.deskribapena}">
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label class="form-label">Solairu Zenbakia</label>
-                                                        <input type="number" name="solairu_zenbakia" class="form-control" th:value="${solairua.solairu_zenb}">
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="submit" class="btn btn-primary">Gorde Aldaketak</button>
-                                                </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-primary">Gorde Aldaketak</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-outline-danger btn-sm btn-accion"
+                                data-bs-toggle="modal"
+                                th:attr="data-bs-target='#modalDelete'+${solairua.id_solairua}">Ezabatu
+                            </button>
+                            <div class="modal fade" th:id="'modalDelete' + ${solairua.id_solairua}" tabindex="-1"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Ezabatu Solairua</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Seguru zaude ezabatu nahi duzula?</p>
+                                            <small class="text-muted">ID solairua: <span
+                                                    th:text="${solairua.id_solairua}"></span></small>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <form th:action="@{/solairua-ezabatu}" method="post" style="display:inline;">
+                                                <input type="hidden" name="id_solairua" th:value="${solairua.id_solairua}">
+                                                <button type="submit" class="btn btn-danger">Ezabatu</button>
                                             </form>
                                         </div>
                                     </div>
                                 </div>
-                                <form action="/solairua-ezabatu" method="post" style="display:inline;">
-                                    <input type="hidden" name="id" th:value="${solairua.id_solairua}">
-                                <button type="button" class="btn btn-outline-danger btn-sm btn-accion"
-                                    data-bs-toggle="modal"
-                                    th:attr="data-bs-target='#modalDelete'+${solairua.id_solairua}">Ezabatu
-                                </button>
-                                    <div class="modal fade" th:id="'modalDelete' + ${solairua.id_solairua}" tabindex="-1" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title">Ezabatu Solairua</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>Seguru zaude ezabatu nahi duzula?</p>
-                                                    <small class="text-muted">ID solairua: <span th:text="${solairua.id_solairua}"></span></small>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <form action="/solairua-ezabatu" method="post" style="display:inline;">
-                                                        <input type="hidden" name="id" th:value="${solairua.id_solairua}">
-                                                        <button type="submit" class="btn btn-danger">Ezabatu</button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </td>
-                        </tr>
+                            </div>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>

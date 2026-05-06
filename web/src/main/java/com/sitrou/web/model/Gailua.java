@@ -1,5 +1,6 @@
 package com.sitrou.web.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -29,11 +30,25 @@ import jakarta.persistence.Table;
 public class Gailua {
     @Id
     // @GeneratedValue(strategy = GenerationType.IDENTITY) //Kentzen dugu, IDa eskuz sartuko duelako gailua gehitzen duen pertsonak.
+    @Column(name = "Id_gailua")
     private String Id_gailua;
+
+    @Column(name = "Id_gela")
     private String Id_gela;
-    private String Serie_zenbakia;
+
+    @Column(name = "Id_erabiltzailea")
+    private Integer Id_erabiltzailea;
+
+    @Column(name = "Serie_zenbakia")
+    private Integer Serie_zenbakia;
+
+    @Column(name = "Izena")
     private String Izena;
+
+    @Column(name = "Gailu_mota")
     private String Gailu_mota;
+
+    @Column(name = "Egoera")
     private String Egoera;
   
    
@@ -49,10 +64,16 @@ public class Gailua {
     public void setId_gela(String Id_gela) {
         this.Id_gela = Id_gela;
     }
-    public String getSerie_zenbakia() {
+    public Integer getId_erabiltzailea() {
+        return Id_erabiltzailea;
+    }
+    public void setId_erabiltzailea(Integer Id_erabiltzailea) {
+        this.Id_erabiltzailea = Id_erabiltzailea;
+    }
+    public Integer getSerie_zenbakia() {
         return Serie_zenbakia;
     }
-    public void setSerie_zenbakia(String Serie_zenbakia) {
+    public void setSerie_zenbakia(Integer Serie_zenbakia) {
         this.Serie_zenbakia = Serie_zenbakia;
     }
     public String getIzena() {

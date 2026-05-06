@@ -125,8 +125,8 @@
                     <div class="input-group">
                         <span class="input-group-text">ROLA</span>
                         <select name="rola" class="form-select">
-                            <option value="Arrunta">Arrunta</option>
-                            <option value="Admin">Admin</option>
+                            <option value="arrunta">Arrunta</option>
+                            <option value="admin">Admin</option>
                         </select>
                     </div>
                 </div>
@@ -145,12 +145,16 @@
                 </label>
 
                 <div class="search-box-modern flex-grow-1">
-                    <div class="input-group shadow-sm">
-                        <span class="input-group-text bg-white border-end-0">
-                            <i class="bi bi-search text-primary"></i>
-                        </span>
-                        <input type="text" id="searchInput" class="form-control border-start-0" placeholder="Bilatu..." aria-label="Search">
-                    </div>
+                    <form th:action="@{/erabiltzaileak}" method="get">
+                        <div class="input-group shadow-sm">
+                            <span class="input-group-text bg-white border-end-0">
+                                <i class="bi bi-search text-primary"></i>
+                            </span>
+                            <input type="text" id="searchInput" name="query" class="form-control border-start-0"
+                                th:value="${query}" placeholder="Bilatu..." aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Bilatu</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -177,69 +181,73 @@
                         <td th:text="${erabiltzailea.rola}"></td>
                         <td>
                             <button class="btn btn-outline-primary btn-sm btn-accion"
-                            data-bs-toggle="modal" 
-                            th:attr="data-bs-target='#modalEdit'+${erabiltzailea.Id_erabiltzailea}"
-                            >Editatu</button>
-                            <form action="/erabiltzailea-ezabatu" method="post" style="display:inline;">
-                                <input type="hidden" name="id" th:value="${erabiltzailea.id_erabiltzailea}">
-                                <button type="button" class="btn btn-outline-danger btn-sm btn-accion"
-                                    data-bs-toggle="modal" 
-                                    th:attr="data-bs-target='#modalDelete'+${erabiltzailea.Id_erabiltzailea}">Ezabatu</button>
-                                <div class="modal fade" th:id="'modalEdit' + ${erabiltzailea.id_erabiltzailea}" tabindex="-1" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title">Erabiltzailea Aldatu</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                data-bs-toggle="modal" 
+                                th:attr="data-bs-target='#modalEdit'+${erabiltzailea.id_erabiltzailea}">
+                                Editatu
+                            </button>
+
+                            <button type="button" class="btn btn-outline-danger btn-sm btn-accion"
+                                data-bs-toggle="modal" 
+                                th:attr="data-bs-target='#modalDelete'+${erabiltzailea.id_erabiltzailea}">Ezabatu</button>
+
+                            <div class="modal fade" th:id="'modalEdit' + ${erabiltzailea.id_erabiltzailea}" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Erabiltzailea Aldatu</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <form th:action="@{/erabiltzailea-eguneratu}" method="post">
+                                            <div class="modal-body" style="text-align: left;">
+                                                <div class="mb-3">
+                                                    <label class="form-label">ID Erabiltzailea</label>
+                                                    <input type="hidden" name="id" th:value="${erabiltzailea.id_erabiltzailea}">
+                                                    <input type="text" class="form-control" th:value="${erabiltzailea.id_erabiltzailea}" readonly>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">Erabiltzaile Izena (Usuarioa)</label>
+                                                    <input type="text" name="usuarioa" class="form-control" th:value="${erabiltzailea.usuarioa}">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">Pasahitza</label>
+                                                    <input type="password" name="pasahitza" class="form-control" th:value="${erabiltzailea.pasahitza}">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label class="form-label">Rola</label>
+                                                    <select name="rola" class="form-select">
+                                                        <option value="arrunta" th:selected="${#strings.toLowerCase(erabiltzailea.rola) == 'arrunta'}">Arrunta</option>
+                                                        <option value="admin" th:selected="${#strings.toLowerCase(erabiltzailea.rola) == 'admin'}">Admin</option>
+                                                    </select>
+                                                </div>
                                             </div>
-                                            <form th:action="@{/erabiltzailea-aldatu}" method="post">
-                                                <div class="modal-body" style="text-align: left;">
-                                                    <div class="mb-3">
-                                                        <label class="form-label">ID Erabiltzailea</label>
-                                                        <input type="text" name="id_erabiltzailea" class="form-control" th:value="${erabiltzailea.id_erabiltzailea}" readonly>
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label class="form-label">Erabiltzaile Izena (Usuarioa)</label>
-                                                        <input type="text" name="usuarioa" class="form-control" th:value="${erabiltzailea.usuarioa}">
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label class="form-label">Pasahitza</label>
-                                                        <input type="password" name="pasahitza" class="form-control" th:value="${erabiltzailea.pasahitza}">
-                                                    </div>
-                                                    <div class="mb-3">
-                                                        <label class="form-label">Rola</label>
-                                                        <input type="text" name="rola" class="form-control" th:value="${erabiltzailea.rola}">
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="submit" class="btn btn-primary">Gorde Aldaketak</button>
-                                                </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-primary">Gorde Aldaketak</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="modal fade" th:id="'modalDelete' + ${erabiltzailea.id_erabiltzailea}" tabindex="-1" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Ezabatu Erabiltzailea</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body" style="text-align: left;">
+                                            <p>Seguru zaude erabiltzaile hau ezabatu nahi duzula?</p>
+                                            <small class="text-muted text-align-center">Usuarioa: <span th:text="${erabiltzailea.usuarioa}"></span></small>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <form th:action="@{/erabiltzailea-ezabatu}" method="post" style="display:inline;">
+                                                <input type="hidden" name="id" th:value="${erabiltzailea.id_erabiltzailea}">
+                                                <button type="submit" class="btn btn-danger">Ezabatu</button>
                                             </form>
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="modal fade" th:id="'modalDelete' + ${erabiltzailea.id_erabiltzailea}" tabindex="-1" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title">Ezabatu Erabiltzailea</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body" style="text-align: left;">
-                                                <p>Seguru zaude erabiltzaile hau ezabatu nahi duzula?</p>
-                                                <small class="text-muted text-align-center">Usuarioa: <span th:text="${erabiltzailea.usuarioa}"></span></small>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <form th:action="@{/erabiltzailea-ezabatu}" method="post" style="display:inline;">
-                                                    <input type="hidden" name="id" th:value="${erabiltzailea.id_erabiltzailea}">
-                                                    <button type="submit" class="btn btn-danger">Ezabatu</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>   
-                            </form>
+                            </div>
                         </td>
                     </tr>
                 </tbody>

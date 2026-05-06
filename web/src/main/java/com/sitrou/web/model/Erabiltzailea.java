@@ -1,5 +1,6 @@
 package com.sitrou.web.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -32,9 +33,15 @@ public class Erabiltzailea {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer Id_erabiltzailea;
-    private String Usuarioa;
-    private String Pasahitza;
-    private String Rola;
+
+    @Column(name = "Usuarioa")
+    private String usuarioa;
+
+    @Column(name = "Pasahitza")
+    private String pasahitza;
+
+    @Column(name = "Rola")
+    private String rola;
    
     public Integer getId_erabiltzailea() {
         return Id_erabiltzailea;
@@ -43,22 +50,22 @@ public class Erabiltzailea {
         this.Id_erabiltzailea = Id_erabiltzailea;
     }
     public String getUsuarioa() {
-        return Usuarioa;
+        return usuarioa;
     }
-    public void setUsuarioa(String Usuarioa) {
-        this.Usuarioa = Usuarioa;
+    public void setUsuarioa(String usuarioa) {
+        this.usuarioa = usuarioa;
     }
     public String getPasahitza() {
-        return Pasahitza;
+        return pasahitza;
     }
-    public void setPasahitza(String Pasahitza) {
-        this.Pasahitza = Pasahitza;
+    public void setPasahitza(String pasahitza) {
+        this.pasahitza = pasahitza;
     }
     public String getRola() {
-        return Rola;
+        return rola;
     }
-    public void setRola(String Rola) {
-        this.Rola = Rola;
+    public void setRola(String rola) {
+        this.rola = rola;
     }
 
     // Getter-ak eta Setter-ak (Lombok baduzu @Data jarri dezakezu gainean)

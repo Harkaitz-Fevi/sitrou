@@ -55,8 +55,8 @@
                                         th:href="@{/historikoa}">Historikoa</a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item" href="solairuak.html"
-                                        th:href="@{/solairuak}">Solairuak Kudeatu</a>
+                                    <a class="dropdown-item" href="solairuak.html" th:href="@{/solairuak}">Solairuak
+                                        Kudeatu</a>
                                 </li>
                             </ul>
                         </li>
@@ -76,28 +76,35 @@
     <h1>Administrazio Panela</h1><br>
     <ul class="nav custom-nav-pills mb-4" id="pills-tab" role="tablist">
         <li class="nav-item" role="presentation">
-            <button class="nav-link  btn btn-outline-light" id="eraikinak-tab" onclick="window.location.href='eraikinak.html'"
-            th:onclick="|window.location.href='@{/eraikinak}'|" data-bs-toggle="pill" type="button" role="tab">Eraikinak</button>
+            <button class="nav-link  btn btn-outline-light" id="eraikinak-tab"
+                onclick="window.location.href='eraikinak.html'" th:onclick="|window.location.href='@{/eraikinak}'|"
+                data-bs-toggle="pill" type="button" role="tab">Eraikinak</button>
         </li>
         <li class="nav-item" role="presentation">
             <button class="nav-link btn btn-outline-light" id="gelak-tab" onclick="window.location.href='gelak.html'"
-            th:onclick="|window.location.href='@{/gelak}'|" data-bs-toggle="pill" type="button" role="tab">Gelak</button>
+                th:onclick="|window.location.href='@{/gelak}'|" data-bs-toggle="pill" type="button"
+                role="tab">Gelak</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link btn btn-outline-light" id="gailuak-tab" onclick="window.location.href='gailuak.html'"
-            th:onclick="|window.location.href='@{/gailuak}'|" data-bs-toggle="pill" type="button" role="tab">Gailuak</button>
+            <button class="nav-link btn btn-outline-light" id="gailuak-tab"
+                onclick="window.location.href='gailuak.html'" th:onclick="|window.location.href='@{/gailuak}'|"
+                data-bs-toggle="pill" type="button" role="tab">Gailuak</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link btn btn-outline-light" id="erabiltzaileak-tab" onclick="window.location.href='erabiltzaileak.html'"
-            th:onclick="|window.location.href='@{/erabiltzaileak}'|" data-bs-toggle="pill" type="button" role="tab">Erabiltzaileak</button>
+            <button class="nav-link btn btn-outline-light" id="erabiltzaileak-tab"
+                onclick="window.location.href='erabiltzaileak.html'"
+                th:onclick="|window.location.href='@{/erabiltzaileak}'|" data-bs-toggle="pill" type="button"
+                role="tab">Erabiltzaileak</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link active btn btn-outline-light" id="historikoa-tab" onclick="window.location.href='historikoa.html'"
-            th:onclick="|window.location.href='@{/historikoa}'|" data-bs-toggle="pill" type="button" role="tab">Historikoa</button>
+            <button class="nav-link active btn btn-outline-light" id="historikoa-tab"
+                onclick="window.location.href='historikoa.html'" th:onclick="|window.location.href='@{/historikoa}'|"
+                data-bs-toggle="pill" type="button" role="tab">Historikoa</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link btn btn-outline-light" id="solairuak-tab" onclick="window.location.href='solairuak.html'"
-            th:onclick="|window.location.href='@{/solairuak}'|" data-bs-toggle="pill" type="button" role="tab">Solairuak</button>
+            <button class="nav-link btn btn-outline-light" id="solairuak-tab"
+                onclick="window.location.href='solairuak.html'" th:onclick="|window.location.href='@{/solairuak}'|"
+                data-bs-toggle="pill" type="button" role="tab">Solairuak</button>
         </li>
     </ul><br>
 
@@ -153,11 +160,11 @@
                 </thead>
 
                 <tbody id="taulaGorputza">
-                    <tr th:each="k : ${movimientos}">
-                        <th scope="row" th:text="${k.idGailua != null ? k.idGailua : '-'}">G-001</th>
-                        <td th:text="${k.idErabiltzailea}">E-002</td>
-                        <td th:text="${k.kudeaketaData}">2024/05/15</td>
-                        <td th:text="${k.ekintza}">Mailegatutakoa</td>
+                    <tr th:each="k : ${mugimenduak}">
+                        <td class="fw-bold" th:text="${k.idGailua}"></td>
+                        <td th:text="${k.idErabiltzailea}"></td>
+                        <td th:text="${k.kudeaketaData}"></td>
+                        <td th:text="${k.ekintza}"></td>
                     </tr>
                 </tbody>
             </table>

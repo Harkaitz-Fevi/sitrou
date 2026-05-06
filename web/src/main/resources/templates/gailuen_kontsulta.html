@@ -57,8 +57,8 @@
                                             th:href="@{/historikoa}">Historikoa</a>
                                     </li>
                                     <li>
-                                    <a class="dropdown-item" href="solairuak.html"
-                                        th:href="@{/solairuak}">Solairuak Kudeatu</a>
+                                        <a class="dropdown-item" href="solairuak.html" th:href="@{/solairuak}">Solairuak
+                                            Kudeatu</a>
                                     </li>
                                 </ul>
                             </li>
@@ -78,41 +78,44 @@
     </header>
     <h1>Gailuen Kontsulta</h1><br><br>
     <!-- FILTROAK -->
-    <div class="row">
-        <div class="col-12 col-md-3">
-
-            <label for="EraikinaMotak" class="form-label">ERAIKINAK</label>
-
-            <select class="form-select select-small" id="EraikinaMotak">
-                <option selected>Guztiak</option>
-                <option value="1">Bat</option>
-                <option value="2">Bi</option>
-                <option value="3">Hiru</option>
-            </select>
-
+    <form th:action="@{/gailuen_kontsulta}" method="get">
+        <div class="row">
+            <div class="col-12 col-md-3">
+                <label for="EraikinaMotak" class="form-label">ERAIKINAK</label>
+                <select class="form-select select-small" id="EraikinaMotak" name="eraikina"
+                    th:onchange="|this.form.submit()|">
+                    <option value="" th:selected="${selectedEraikina == null}">Guztiak</option>
+                    <th:block th:each="eraikina : ${eraikinak}">
+                        <option th:value="${eraikina.idEraikina}"
+                            th:text="${eraikina.izena}"
+                            th:selected="${eraikina.idEraikina == selectedEraikina}"></option>
+                    </th:block>
+                </select>
+            </div>
+            <div class="col-12 col-md-3">
+                <label for="GelaMotak" class="form-label">GELAK</label>
+                <select class="form-select select-small" id="GelaMotak" name="gela"
+                    th:onchange="|this.form.submit()|">
+                    <option value="" th:selected="${selectedGela == null}">Guztiak</option>
+                    <th:block th:each="gela : ${gelak}">
+                        <option th:value="${gela.id_gela}"
+                            th:text="${gela.izena}"
+                            th:selected="${gela.id_gela == selectedGela}"></option>
+                    </th:block>
+                </select>
+            </div>
+            <div class="col-12 col-md-4">
+                <label for="GailuMotak" class="form-label">BILATU</label>
+                <div class="d-flex">
+                    <input class="form-control me-2" type="search" name="query"
+                        th:value="${query}" placeholder="Izena, ID, serie zenbakia..." aria-label="Search" />
+                    <button class="btn btn-outline-success" type="submit">BILATU</button>
+                </div>
+            </div>
         </div>
-        <div class="col-12 col-md-3">
+    </form>
 
-            <label for="GelaMotak" class="form-label">GELAK</label>
-
-            <select class="form-select select-small" id="GelaMotak">
-                <option selected>Guztiak</option>
-                <option value="1">Bat</option>
-                <option value="2">Bi</option>
-                <option value="3">Hiru</option>
-            </select>
-        </div>
-        <div class="col-12 col-md-4">
-
-            <label for="GailuMotak" class="form-label">BILATU</label>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Izena, mota, serie zenbakia..."
-                    aria-label="Search" />
-                <button class="btn btn-outline-success" type="submit">BILATU</button>
-            </form>
-        </div>
-
-        <!-- TABLA DATUEIKIN -->
+    <!-- TABLA DATUEIKIN -->
         <div class="row">
             <div class="col-12 g-5">
                 <table class="table table-hover">
@@ -135,15 +138,26 @@
                             <td th:text="${gailua.serie_zenbakia}">Seriea</td>
 
                             <td>
-                                <form th:if="${gailua.egoera == 'Erabilgarri'}" action="/alokatu" method="post">
+                                <form th:if="${gailua.egoera == 'Erabilgarri'}" th:action="@{/alokatu}" action="/alokatu" method="post">
                                     <input type="hidden" name="id_gailua" th:value="${gailua.id_gailua}">
-                                    <button type="submit" class="btn btn-success btn-sm">Erabilgarri</button>
+                                    <button type="submit" class="btn btn-success btn-sm">Mailegatu</button>
                                 </form>
 
-                                <button th:unless="${gailua.egoera == 'Erabilgarri'}"
-                                    class="btn btn-secondary btn-sm text-decoration-line-through opacity-50" disabled>
-                                    Mailegatuta
-                                </button>
+                                <div th:if="${gailua.egoera == 'Mailegatuta'}">
+
+                                    <form
+                                        th:if="${usuarioLogueado != null and gailua.id_erabiltzailea == usuarioLogueado.id_erabiltzailea}"
+                                        action="/itzuli" method="post">
+                                        <input type="hidden" name="id_gailua" th:value="${gailua.id_gailua}">
+                                        <button type="submit" class="btn btn-warning btn-sm">Itzuli (Zurea da)</button>
+                                    </form>
+
+                                    <button
+                                        th:unless="${usuarioLogueado != null and gailua.id_erabiltzailea == usuarioLogueado.id_erabiltzailea}"
+                                        class="btn btn-secondary btn-sm opacity-50" disabled>
+                                        Mailegatuta
+                                    </button>
+                                </div>
                             </td>
                         </tr>
                     </tbody>
