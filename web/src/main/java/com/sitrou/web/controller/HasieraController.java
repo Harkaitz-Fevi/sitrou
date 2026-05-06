@@ -230,9 +230,33 @@ public class HasieraController {
     }
 
     @GetMapping("/historikoa")
-    public String verHistorikoa(Model model) {
+    public String verHistorikoa(
+            @RequestParam(name = "queryGailua", required = false) String queryGailua,
+            @RequestParam(name = "queryErabiltzailea", required = false) String queryErabiltzailea,
+            @RequestParam(name = "tipo", required = false) String tipo,
+            Model model) {
         List<Kudeaketa> listaMovimientos = kudeaketakRepository.findAll();
+        if (tipo != null && !tipo.isBlank()) {
+            listaMovimientos = listaMovimientos.stream()
+                    .filter(k -> k.getEkintza() != null && k.getEkintza().equalsIgnoreCase(tipo))
+                    .toList();
+        }
+        if (queryGailua != null && !queryGailua.isBlank()) {
+            String lowerQuery = queryGailua.toLowerCase();
+            listaMovimientos = listaMovimientos.stream()
+                    .filter(k -> k.getIdGailua() != null && k.getIdGailua().toLowerCase().contains(lowerQuery))
+                    .toList();
+        }
+        if (queryErabiltzailea != null && !queryErabiltzailea.isBlank()) {
+            String lowerQuery = queryErabiltzailea.toLowerCase();
+            listaMovimientos = listaMovimientos.stream()
+                    .filter(k -> k.getIdErabiltzailea() != null && k.getIdErabiltzailea().toString().contains(lowerQuery))
+                    .toList();
+        }
         model.addAttribute("mugimenduak", listaMovimientos);
+        model.addAttribute("queryGailua", queryGailua);
+        model.addAttribute("queryErabiltzailea", queryErabiltzailea);
+        model.addAttribute("tipo", tipo);
         return "historikoa";
     }
 
@@ -494,11 +518,23 @@ public class HasieraController {
     // SOLAIRUAK KONTROLATZEKO METODOAK
     // ==========================================
     @GetMapping("/solairuak")
-    public String solairuak(Model model) {
+    public String solairuak(
+            @RequestParam(name = "query", required = false) String query,
+            Model model) {
         List<Solairuak> solairuakList = solairuakRepository.findAll();
+        if (query != null && !query.isBlank()) {
+            String lowerQuery = query.toLowerCase();
+            solairuakList = solairuakList.stream()
+                    .filter(s -> (s.getId_solairua() != null && s.getId_solairua().toLowerCase().contains(lowerQuery))
+                            || (s.getId_eraikina() != null && s.getId_eraikina().toLowerCase().contains(lowerQuery))
+                            || (s.getDeskribapena() != null && s.getDeskribapena().toLowerCase().contains(lowerQuery))
+                            || (s.getSolairu_zenb() != null && s.getSolairu_zenb().toString().contains(lowerQuery)))
+                    .toList();
+        }
         List<Eraikinak> eraikinakList = eraikinakRepository.findAll();
         model.addAttribute("solairuak", solairuakList);
         model.addAttribute("eraikinak", eraikinakList);
+        model.addAttribute("query", query);
         return "solairuak";
     }
 
