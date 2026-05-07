@@ -1,5 +1,5 @@
 
-// --------------------------- HISTORIKOA-------------------------------
+//---------------------------------------------BILATZAILEAK-------------------------------------------------------------------
 document.addEventListener("DOMContentLoaded", function () {
    
     const inputGailua = document.getElementById("bilatuGailua");
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     const batDatorGailua = balioaGailua.toLowerCase().includes(testuaGailua);
                     const batDatorErabiltzailea = balioaErabiltzailea.toLowerCase().includes(testuaErabiltzailea);
 
-                    // Si coincide con AMBOS filtros (o si los filtros están vacíos), mostramos la fila // Bi filtroekin koinziditzen badu (edo filtroak hutsik balidn badadude), fila bistaratzen dugu
+               // Bi filtroekin koinziditzen badu (edo filtroak hutsik balidn badadude), fila bistaratzen dugu
                     if (batDatorGailua && batDatorErabiltzailea) {
                         ilarak[i].style.display = ""; // Fila erakusten du 
                     } else {
