@@ -31,7 +31,7 @@ public class HasieraController {
     private final GailuaRepository gailuaRepository;
     private final GelakRepository gelakRepository;
     private final EraikinakRepository eraikinakRepository;
-    private final SolairuakRepository solairuakRepository; // <--- ESTA LÍNEA TE FALTA
+    private final SolairuakRepository solairuakRepository; 
 
     @Autowired
     private KudeaketakRepository kudeaketakRepository;
@@ -109,7 +109,6 @@ public class HasieraController {
             return "redirect:/gailuen_kontsulta";
         }
 
-        // 2. Verificación en Base de Datos
         Erabiltzailea erabiltzailea = erabiltzaileRepository.findByUsuarioa(usuarioa);
 
         if (erabiltzailea != null && erabiltzailea.getPasahitza().equals(pasahitza)) {
